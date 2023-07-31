@@ -1,12 +1,7 @@
 
 
 server:
-  port: 9000
-
----
-## logback config
-#logging:
-#  config: file:/opt/gateway/logback-spring_pub.xml
+  port: 12010
 
 spring:
   application:
@@ -20,32 +15,28 @@ spring:
 
       routes:
         routes:
-          - id: openapi
-            uri: http://localhost:${server.port}
-            predicates:
-              - Path=/v3/api-docs/**
-            filters:
-              - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
-
           - id: tuna
-            uri: http://localhost:12000/
+            uri: http://localhost:12000
             predicates:
-              - Path=/tuna/**/**
+              - Path=/tuna/**
             filters:
+              - RemoveRequestHeader=Cookie
               - RewritePath=/tuna/(?<path>.*), /$\{path}
-
           - id: tunaEclass
-            uri: http://localhost:12001/
+            uri: http://localhost:12001
             predicates:
               - Path=/tunaEclass/**
             filters:
+              - RemoveRequestHeader=Cookie
               - RewritePath=/tunaEclass/(?<path>.*), /$\{path}
 
           - id: tunaLectureApply
-            uri: http://localhost:12002/
+            uri: http://localhost:12002
             predicates:
               - Path=/tunaLectureApply/**
             filters:
+              - RemoveRequestHeader=Cookie
               - RewritePath=/tunaLectureApply/(?<path>.*), /$\{path}
+
 
 

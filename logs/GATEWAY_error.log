@@ -12,3 +12,18 @@ Action:
 
 Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
 
+[2023-07-31 18:33:14.808:3151] --- [ main ] [1;31mERROR[0;39m [32mo.s.b.d.LoggingFailureAnalysisReporter[0;39m: 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method apis in co.refactoring.gateway.GatewayApplication required a bean of type 'org.springdoc.core.SwaggerUiConfigParameters' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springdoc.core.SwaggerUiConfigParameters' in your configuration.
+
