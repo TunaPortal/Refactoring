@@ -1,0 +1,16 @@
+server:
+  port: 12002
+
+spring:
+  mvc:
+    servlet:
+      path: /tunaLectureApply
+
+thymeleaf:
+  prefix=classpath: templates/
+  suffix: .html
+  check-template-location: true
+  cache: false
+  mvc:
+    static-path-pattern: "/static/**"
+

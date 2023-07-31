@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:fragment="sidebar">
+	<!-- Sidebar -->
+	 <nav id="sidebar" aria-label="Main Navigation">
+	   <!-- Side Header -->
+	   <div class="content-header">
+	     <a class="fw-semibold text-dual">
+	       <span class="smini-hide fs-5 tracking-wider">TUNA<span class="fw-normal"> 장학</span></span>
+	     </a>
+	     <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout" data-action="sidebar_close" href="javascript:void(0)">
+           <i class="fa fa-fw fa-times"></i>
+         </a>
+	   </div>
+	   <!-- END Side Header -->
+	   <!-- Sidebar Scrolling -->
+	   <div class="js-sidebar-scroll">
+	     <!-- Side Navigation -->
+	     <div class="content-side">
+	       <ul class="nav-main">
+			<li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/stud/scholar/Application}">
+	             <i class="nav-main-link-icon fa fa-graduation-cap"></i>
+	             <span class="nav-main-link-name fw-bold">장학금 신청</span>
+	           </a>
+	        </li>
+			<li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/stud/scholar/Status}">
+	             <i class="nav-main-link-icon fa fa-money-check"></i>
+	             <span class="nav-main-link-name fw-bold">당해학기 장학 신청 현황</span>
+	           </a>
+	        </li>
+			<li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/stud/scholar/Search}">
+	             <i class="nav-main-link-icon fa fa-clipboard"></i>
+	             <span class="nav-main-link-name fw-bold">전체 장학 조회</span>
+	           </a>
+	        </li>
+	       </ul>
+	     </div>
+	     <!-- END Side Navigation -->
+	   </div>
+	   <!-- END Sidebar Scrolling -->
+	 </nav>
+	 <!-- END Sidebar -->
+</th:block>
+</body>
+</html>

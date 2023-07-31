@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko"
+xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E-Class 수강생 문의</title>
+      <link rel="stylesheet" th:href="@{/css/oneui.min.css}" />
+  <style>
+/* 	  table tr td {
+		text-overflow : ellipsis;
+		overflow : hidden;
+		white-space : nowrap;
+		max-width : 200px;
+	  } */
+  </style>
+  </head>
+  <body>
+      <main id="main-container">
+        <div class="content">
+		   <h3 class="h3 fw-bold">수강생 문의</h3>
+           <div class="block block-rounded" style="min-height:500px">
+             <table class="table table-hover js-table-checkable table-vcenter scroll-table m-0">
+               <thead>
+                 <tr class="text-center fw-bold">
+                   <th style="width: 80px" >번호</th>
+                   <th >제목</th>
+                   <th style="width: 12%" >과목명</th>
+                   <th style="width: 12%" >작성자</th>
+                   <th style="width: 12%" >작성일자</th>
+                   <th style="width: 12%" >답변여부</th>
+                 </tr>
+               </thead>
+               <tbody>
+	               <th:block th:each = "qna : ${qnaList}">
+	                 <tr onclick="qnaDetail(this)">
+	                   <td class="text-center" th:text = "${qna.no}"></td>
+	                   <td class="text-start" th:text = "${qna.title}"></td>
+	                   <td class="text-center" th:text = "${qna.subjectVO.name}"></td>
+	                   <td class="text-center" th:text = "${qna.studentVO.name}"></td>
+	                   <td class="text-center" th:text = "${qna.enrollDate}"></td>
+                     <th:block th:if="${qna.answer != null}">
+                       <td class="text-center text-success" th:text="완료"></td>
+                     </th:block>
+                     <th:block th:unless="${qna.answer != null}">
+                      <td class="text-center text-danger" th:text="대기"></td>
+                     </th:block>
+	                 </tr>
+	               </th:block>
+               </tbody>
+             </table>
+          </div> <!-- col-12 end -->
+          <ul class="pagination pagination-sm justify-content-center">
+            <li class="page-item">
+              <button class="page-link" onclick="javascript:pageBtnClick(this);" style="width:25pt;height:25pt; font-size:16px;">1</button>
+            </li>
+          </ul>
+			
+        </div> <!-- content END -->
+		<th:block th:if = "${pageNum != null || pageNum != ''}">
+			<script th:inline="javascript">
+				let btns = document.querySelectorAll('li > button')
+				let pageNum = /*[[${param.pageNum}]]*/
+				btns.forEach(btn=>{
+					if(btn.innerHTML == pageNum){
+						btn.parentElement.setAttribute("class", "page-item active")
+					}
+				})
+				
+			</script>
+		</th:block>
+		<script>
+		function pageBtnClick(e){
+			location.href = 'qnaList?pageNum='+e.innerHTML;
+		}
+		
+		function qnaDetail(e){
+			location.href = 'qna?no='+e.children[0].innerHTML;
+		}
+		
+		</script>
+      </main>
+
+<!--
+███████  ██████   ██████  ████████ ███████ ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+█████   ██    ██ ██    ██    ██    █████   ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+██       ██████   ██████     ██    ███████ ██   ██ 
+-->
+      <!-- <footer id="page-footer" class="bg-flat-lighter">
+        <div class="content">footer</div>
+      </footer> -->
+    
+  </body>
+</html>

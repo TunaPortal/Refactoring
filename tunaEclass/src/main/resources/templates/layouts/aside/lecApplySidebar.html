@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:fragment="sidebar">
+	<!-- Sidebar -->
+	 <nav id="sidebar" aria-label="Main Navigation">
+	   <!-- Side Header -->
+	   <div class="content-header">
+	     <a class="fw-semibold text-dual">
+	       <span class="smini-hide fs-5 tracking-wider">TUNA<span class="fw-normal"> 수강신청</span></span>
+	     </a>
+	     <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout" data-action="sidebar_close" href="javascript:void(0)">
+           <i class="fa fa-fw fa-times"></i>
+         </a>
+	   </div>
+	   <!-- END Side Header -->
+	   <!-- Sidebar Scrolling -->
+	   <div class="js-sidebar-scroll">
+	     <!-- Side Navigation -->
+	     <div class="content-side">
+	       <ul class="nav-main">
+
+	     	<li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/stud/course/Warning}">
+	           	 <i class="nav-main-link-icon fa fa-basket-shopping"></i>
+	             <span class="nav-main-link-name fw-bold">수강신청 유의사항</span>
+	           </a>
+	        </li>
+	     	<li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/stud/course/Basket}">
+	           	 <i class="nav-main-link-icon fa fa-basket-shopping"></i>
+	             <span class="nav-main-link-name fw-bold">수강꾸러미</span>
+	           </a>
+	        </li>
+	        <li class="nav-main-item">
+	           <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+	             <i class="nav-main-link-icon fa fa-table-cells"></i>
+	             <span class="nav-main-link-name fw-bold">수강꾸러미 시간표</span>
+	           </a>
+	           <ul class="nav-main-submenu">
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/course/BasketSchedule}">
+	                 <span class="nav-main-link-name">시간표</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/course/BasketLectureList}">
+	                 <span class="nav-main-link-name">강의목록</span>
+	               </a>
+	             </li>
+	         	</ul>
+	         </li>
+	         <li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/stud/course/Application}">
+	           	 <i class="nav-main-link-icon fa fa-check-to-slot"></i>
+	             <span class="nav-main-link-name fw-bold">수강신청</span>
+	           </a>
+	        </li>
+	        <li class="nav-main-item">
+	           <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+	             <i class="nav-main-link-icon fa fa-table-cells"></i>
+	             <span class="nav-main-link-name fw-bold">수강신청 시간표</span>
+	           </a>
+	           <ul class="nav-main-submenu">
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/course/ApplySchedule}">
+	                 <span class="nav-main-link-name">시간표</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/course/ApplyLectureList}">
+	                 <span class="nav-main-link-name">강의목록</span>
+	               </a>
+	             </li>
+	         	</ul>
+	         </li>
+	       </ul>
+	     </div>
+	     <!-- END Side Navigation -->
+	   </div>
+	   <!-- END Sidebar Scrolling -->
+	 </nav>
+	 <!-- END Sidebar -->
+</th:block>
+</body>
+</html>

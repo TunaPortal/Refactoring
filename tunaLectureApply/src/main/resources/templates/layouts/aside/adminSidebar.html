@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:fragment="sidebar">
+	<!-- Sidebar -->
+	 <nav id="sidebar" aria-label="Main Navigation">
+	   <!-- Side Header -->
+	   <div class="content-header">
+	     <a class="fw-semibold text-dual">
+	       <span class="smini-hide fs-5 tracking-wider">TUNA<span class="fw-normal"> admin</span></span>
+	     </a>
+	     <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout" data-action="sidebar_close" href="javascript:void(0)">
+           <i class="fa fa-fw fa-times"></i>
+         </a>
+	   </div>
+	   <!-- END Side Header -->
+	   <!-- Sidebar Scrolling -->
+	   <div class="js-sidebar-scroll">
+	     <!-- Side Navigation -->
+	     <div class="content-side">
+	       <ul class="nav-main"> 
+	         <li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/admin/admin/userSearch}">
+	             <i class="nav-main-link-icon fa fa-circle-user"></i>
+	             <span class="nav-main-link-name fw-bold">사용자 관리</span>
+	           </a>
+	         </li>
+	         <li class="nav-main-item">
+	           <a class="nav-main-link"  th:href="@{/admin/admin/scholarSearch}">
+	             <i class="nav-main-link-icon fa fa-graduation-cap"></i>
+	             <span class="nav-main-link-name fw-bold">장학 신청 관리</span>
+	           </a>
+	         </li>
+	         <li class="nav-main-item">
+	           <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+	             <i class="nav-main-link-icon fa fa-file-image"></i>
+	             <span class="nav-main-link-name fw-bold">배너 관리</span>
+	           </a>
+	           <ul class="nav-main-submenu">
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/admin/admin/basicBannerManagm}">
+	                 <span class="nav-main-link-name">기본 바로가기 배너 관리</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/admin/admin/optionBannerManagm}">
+	                 <span class="nav-main-link-name">옵션 바로가기 배너 관리</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/admin/admin/sliderBannerManagm}">
+	                 <span class="nav-main-link-name">슬라이드 배너 관리</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/admin/admin/bannerList}">
+	                 <span class="nav-main-link-name">전체 배너 관리</span>
+	               </a>
+	             </li>
+	           </ul>
+	         </li>
+	         <li class="nav-main-item">
+	           <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+	             <i class="nav-main-link-icon fa fa-clipboard"></i>
+	             <span class="nav-main-link-name fw-bold">게시물 관리</span>
+	           </a>
+	           <ul class="nav-main-submenu">
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/admin/admin/adminNoticeList}">
+	                 <span class="nav-main-link-name">공지사항 관리</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/admin/admin/adminSchedule}">
+	                 <span class="nav-main-link-name">학사일정 관리</span>
+	               </a>
+	             </li>
+	           </ul>
+	         </li>
+	       </ul>
+	     </div>
+	     <!-- END Side Navigation -->
+	   </div>
+	   <!-- END Sidebar Scrolling -->
+	 </nav>
+	 <!-- END Sidebar -->
+</th:block>
+</body>
+</html>

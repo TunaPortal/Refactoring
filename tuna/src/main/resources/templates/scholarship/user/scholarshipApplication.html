@@ -1,0 +1,204 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>장학금 신청</title>
+  <link rel="stylesheet" th:href="@{/js/plugins/sweetalert2/sweetalert2.min.css}">
+  <script th:src="@{/js/plugins/sweetalert2/sweetalert2.min.js}"></script>
+  <script th:src="@{/js/dialog.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/oneui.min.css}" />
+
+</head>
+
+<body>
+<main>
+  <div id="section ">
+
+    <div id="page-container">
+
+      <div class="content content-boxed ">
+        <h3 class="h3 fw-bold mb-2">장학금 신청</h3>
+        <div class="row">
+          <div class="col-lg-12 col-xl-12 bg-body-extra-light "style="padding: 10px;">
+            <div class="m-4">
+              <form method="post" id = "frm">
+                <div class="mb-4">
+                  <div class="input-group">
+                    <span class="input-group-text" style ="width: 80px ">소속</span>
+                    <input type="text" class="form-control" id="deptcode" name="deptcode" readonly>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <div class="input-group">
+                    <span class="input-group-text" style ="width: 80px">이름</span>
+                    <input type="text" class="form-control" id="name" name="name" readonly>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <div class="input-group">
+                    <span class="input-group-text text-center" style ="width: 80px">생년월일</span>
+                    <input type="text" class="form-control" id="birth" name="birth" readonly>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <div class="input-group">
+                    <span class="input-group-text text-center" style ="width: 80px">휴대전화</span>
+                    <input type="text" class="form-control" id="tel" name="tel" readonly>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="input-group">
+                      <span class="input-group-text" style ="width: 80px">계좌정보</span>
+                      <span class="input-group-text">은행</span>
+                      <div class="col-md-3 col-xl-2">
+                        <select class="form-select" id="example-select" name="example-select">
+                          <option></option>
+                          <option value="35">경남은행</option>
+                          <option value="29">광주은행</option>
+                          <option value="7">국민은행</option>
+                          <option value="5">기업은행</option>
+                          <option value="15">농협중앙회</option>
+                          <option value="17">농협회원조합</option>
+                          <option value="25">대구은행</option>
+                          <option value="47">도이치은행</option>
+                          <option value="27">부산은행</option>
+                          <option value="3">산업은행</option>
+                          <option value="41">상호저축은행</option>
+                          <option value="37">새마을금고</option>
+                          <option value="11">수협중앙회</option>
+                          <option value="36">신한금융투자</option>
+                          <option value="60">신한은행</option>
+                          <option value="39">신협중앙회</option>
+                          <option value="9">외환은행</option>
+                          <option value="19">우리은행</option>
+                          <option value="56">우체국</option>
+                          <option value="33">전북은행</option>
+                          <option value="31">제주은행</option>
+                          <option value="68">카카오뱅크</option>
+                          <option value="67">케이뱅크</option>
+                          <option value="59">하나은행</option>
+                          <option value="23">한국씨티은행</option>
+                          <option value="45">HSBC은행</option>
+                          <option value="21">SC제일은행</option>
+                        </select>
+                      </div>
+                      <span class="input-group-text" style ="width: 80px">계좌 번호</span>
+                      <input type="text" class="form-control" id="bank" name="bank">
+                      <span class="input-group-text" style ="width: 80px">예금주</span>
+                      <input type="text" class="form-control" id="accname" name="accname">
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <table class="table table-striped table-vcenter table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="fw-semibold fs-sm text-center" rowspan="2"><input type="radio" name = "schNo" value = "1"><br>성적우수<br>장학금</th>
+                      <th class="fw-semibold fs-sm" style = "width:80px; ">안내사항</th>
+                      <td class="fw-semibold fs-sm text-left">직전학기 과락없이 수강신청 기준학점(단, 모든 학부(과)의 최종학기 직전학기는 14학점) 이상 취득하고, 직전학기 학업성적
+                        평점평균이 B(3.5) 이상이며 품행이 단정한 자 단, 시행에 관한 사항은 별도로 정한다.</td>
+                    </tr>
+                    <tr>
+                      <th class="fw-semibold fs-sm">제출서류</th>
+                      <td class="fw-semibold fs-sm text-center">없음</td>
+                    </tr>
+                    <tr>
+                      <th class="fw-semibold fs-sm text-center" rowspan="2"><input type="radio" name = "schNo" value = "2"><br>가족 장학금</th>
+                      <th class="fw-semibold fs-sm">안내사항</th>
+                      <td class="fw-semibold fs-sm">친가족 2명 이상 본 대학교(학부과정)에 재학하고 있는 자 중 1인에게 지원(단, 모든 학부(과)의 직전학기는 12학점.
+                        4학년은 8학점)이상 취득하고, 직전학기 학업성적 평점평균이 C+(2.5)이상 </td>
+                    </tr>
+                    <tr>
+                      <th class="fw-semibold fs-sm">제출서류</th>
+                      <td class="fw-semibold fs-sm text-center">가족관계증명서</td>
+                    </tr>
+                    <tr>
+                      <th class="fw-semibold fs-sm text-center" rowspan="2"><input type="radio" name = "schNo" value = "3" style ="width:100px;"><br>교직원가족<br>장학금</th>
+                      <th class="fw-semibold fs-sm">안내사항</th>
+                      <td class="fw-semibold fs-sm">대학 교직원 가족 또는 법인 소속 교직원 가족이며, 직전학기 17학점(졸업예정 학생은 12학점) 이상 취득하고, 직전학기
+                        학업성적 평점평균이 C(2.0)이상 </td>
+
+                    </tr>
+                    <tr>
+                      <th class="fw-semibold fs-sm">제출서류</th>
+                      <td class="fw-semibold fs-sm text-center">가족관계증명서</td>
+                    </tr>
+
+
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+                <input type="button" id = "applyBtn" onclick="javascript:ScholarApply();" class="btn btn-info" style="margin: 0 auto; display: block;" value="제출">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <th:block>
+  <script th:inline="javascript">
+		let error = /*[[${error}]]*/ 'default';
+		let errorTitle = /*[[#{title.err.apply}]]*/ 'default';
+		Dialogs.dialog('error', errorTitle, error);
+	</script>
+  </th:block>
+	<th:block>
+  <script th:inline="javascript">
+  let accessError = /*[[${accessError}]]*/ 'default';
+	let accessTitle = /*[[#{title.err.access}]]*/ 'default';
+		Dialogs.dialog('error', accessTitle, accessError);
+	</script>
+  </th:block>
+  
+  <script>
+  let check = 0;
+  function ScholarApply(){
+	  let header = document.querySelector('meta[name="_csrf_header"]').content;
+	  let token = document.querySelector('meta[name="_csrf"]').content;
+	  let radios = document.querySelectorAll("[type='radio']")		
+	  
+	  fetch("ApplyCheck",{
+	  			headers: {
+	                'header': header,
+	              	'X-Requested-With': 'XMLHttpRequest',
+	                "Content-Type": "application/json",
+	                'X-CSRF-Token': token	// header에 X-CSRF-Token부분에 토큰값이 들어가 정상적으로 POST값이 넘어가는 것을 볼 수 있다!
+	            }
+	  		}).then(result => result.json())
+	  		  .then(result => {
+	  			let radios = document.querySelectorAll("[type='radio']")
+	  			
+			  	check=0;
+			  	result.forEach((val,idx)=>{
+			  		radios.forEach(radio=>{
+			  			if(radio.checked == true){
+			  				if(radio.value == val.schNo){
+			  					Dialogs.dialog('error', '신청 실패', '동일한장학금은 신청이 불가능합니다.');
+			  					check++;
+			  					return;
+			  				}
+			  			}
+			  	  	})
+			    })
+		  if(check == 0){
+			  frm.submit();
+		  }
+	  })
+  }  
+  
+  
+  
+  </script>
+  
+  
+  </main>
+</body>
+
+</html>

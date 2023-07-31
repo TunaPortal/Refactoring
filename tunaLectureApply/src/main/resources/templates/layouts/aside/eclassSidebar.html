@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<th:block th:fragment="sidebar">
+	<!-- Sidebar -->
+	 <nav id="sidebar" aria-label="Main Navigation">
+	   <!-- Side Header -->
+	   <div class="content-header">
+	     <a class="fw-semibold text-dual">
+  	       <span class="smini-hide fs-5 tracking-wider">TUNA<span class="fw-normal"> e-Class</span></span>
+	     </a>
+	     <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout" data-action="sidebar_close" href="javascript:void(0)">
+           <i class="fa fa-fw fa-times"></i>
+         </a>
+	   </div>
+	   <!-- END Side Header -->
+	
+	   <!-- Sidebar Scrolling -->
+	   <div class="js-sidebar-scroll">
+	     <!-- Side Navigation -->
+	     <div class="content-side">
+	     <div class="row">
+	     <div class="d-flex justify-content-center">
+	     <form th:action="@{/stud/eclass/home}">
+	     <select class="btn btn-dark dropdown-toggle" 
+	     id="seasonCode" 
+	     name="seasonCode" 
+	     aria-label="Floating label select example"
+	     onchange="this.form.submit()">
+	     <option value="106" id="106">2022년 2학기</option>
+	     <option value="105" id="105">2022년 1학기</option>
+	     <option value="104" id="104">2021년 2학기</option>
+	     <option value="103" id="103">2021년 1학기</option>
+	     <option value="102" id="102">2020년 2학기</option>
+	     <option value="101" id="101">2020년 1학기</option>
+	     </select>
+	     </form>
+	     </div>
+	     </div>
+
+	       <ul class="nav-main">
+			<li class="nav-main-item">
+	           <a class="nav-main-link" th:href="@{/stud/eclass/home}">
+	             <i class="nav-main-link-icon si si-speedometer"></i>
+	             <span class="nav-main-link-name fw-bold">강의 홈</span>
+	           </a>
+	        </li>
+		 	<li class="nav-main-item" th:each="s : ${side}">
+	           <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+	             <i class="nav-main-link-icon fa fa-layer-group"></i>
+	             <span class="nav-main-link-name fw-bold" th:text="${s.NAME}"></span>
+	           </a>
+	           <ul class="nav-main-submenu">
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/eclass/lectureHome(sbjNo=${s.SBJNO})}">
+	                 <span class="nav-main-link-name">홈</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/eclass/lectureNotice(sbjNo=${s.SBJNO})}">
+	                 <span class="nav-main-link-name">공지사항</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/eclass/lecturePlan(sbjNo=${s.SBJNO})}">
+	                 <span class="nav-main-link-name">강의계획서</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/eclass/download(sbjNo=${s.SBJNO})}">
+	                 <span class="nav-main-link-name">자료실</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/eclass/taskList(sbjNo=${s.SBJNO})}">
+	                 <span class="nav-main-link-name">과제</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/eclass/qnaList(sbjNo=${s.SBJNO})}">
+	                 <span class="nav-main-link-name">Q&A</span>
+	               </a>
+	             </li>
+	             <li class="nav-main-item">
+	               <a class="nav-main-link" th:href="@{/stud/eclass/attendance(sbjNo=${s.SBJNO})}">
+	                 <span class="nav-main-link-name">출석</span>
+	               </a>
+	             </li>
+	           </ul>
+	         </li>
+	       </ul>
+	     </div>
+	   </div>
+<th:block>
+<script th:inline="javascript">
+document.addEventListener("DOMContentLoaded", function(){
+		 let cookieRaw = document.cookie;
+		let cookies = cookieRaw.split(';');
+		let cookieMap = new Map();
+		for(let cookie of cookies) {
+			cookieMap.set(cookie.split("=")[0], cookie.split("=")[1]);
+		}
+			 
+		 let val = cookieMap.get('seasonCode');
+		 console.log(val);
+		 
+		 switch(val){
+		 	 	case '106':
+		 		$('#106').attr('selected', 'selected')
+		 		break;
+		 	case '105':
+		 		$('#105').attr('selected', 'selected')
+		 		break;
+		 	case '104':
+		 		$('#104').attr('selected', 'selected')
+		 		break;
+		 	case '103':
+		 		$('#103').attr('selected', 'selected')
+		 		break;
+		 	case '102':
+		 		$('#102').attr('selected', 'selected')
+		 		break;
+		 	case '101':
+		 		$('#101').attr('selected', 'selected')
+		 		break;
+		 }
+	 })
+</script>
+</th:block>
+	 </nav>
+</th:block>
+</body>
+</html>

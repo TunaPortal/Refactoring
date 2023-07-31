@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="30 seconds">
+	<property name="APP_NAME" value="GATEWAY"/>
+
+	<property name="DEFAULT_LOG_FILE_NAME" value="GATEWAY_now"/>
+
+	<property name="CONSOLE_LOG_PATTERN"
+			  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}:%-3relative] --- [ %thread{10} ] %highlight(%-5level) %green(%logger{20}): %msg%n"/>
+
+	<property name="LOG_PATH" value="/opt/gateway/logs"/>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/${APP_NAME}_now.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_PATH}/${DEFAULT_LOG_FILE_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+			<!-- keep 30 days' worth of history -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+
+		<file>${LOG_PATH}/${APP_NAME}_error.log</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${LOG_PATH}/error_backup/%d{yyyyMM, aux}/${APP_NAME}_%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+
+			<maxHistory>366</maxHistory>
+
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- org.springframework로 시작하는 패키지에 속한 클래스에서 출력하는 로그는 info 이상의 레벨에 해당하는것으로 출력 -->
+
+	<root level="INFO">	<!--  root 에 해당하는 대상을 STDOUT 형태와 FILE 형태를 적용 -->
+		<appender-ref ref="FILE"/>
+		<appender-ref ref="FILE_ERROR" />
+	</root>
+
+<!--	&lt;!&ndash; publish 버전이면  &ndash;&gt;-->
+<!--	<springProfile name="pub">-->
+<!--		<logger name="org.springframework" level="INFO" />-->
+
+<!--		<root level="INFO">	&lt;!&ndash;  root 에 해당하는 대상을 STDOUT 형태와 FILE 형태를 적용 &ndash;&gt;-->
+<!--			<appender-ref ref="STDOUT"/>-->
+<!--			<appender-ref ref="FILE"/>-->
+<!--			<appender-ref ref="FILE_ERROR" />-->
+<!--		</root>-->
+<!--	</springProfile>-->
+
+<!--	<springProfile name="local">-->
+<!--		<logger name="org.springframework" level="INFO" />-->
+
+<!--		<root level="INFO">	&lt;!&ndash;  root 에 해당하는 대상을 STDOUT 형태와 FILE 형태를 적용 &ndash;&gt;-->
+<!--			<appender-ref ref="STDOUT"/>-->
+<!--		</root>-->
+<!--	</springProfile>-->
+
+<!--	<springProfile name="dev">-->
+<!--		<logger name="org.springframework" level="INFO" />-->
+<!--		<root level="INFO">-->
+<!--			<appender-ref ref="STDOUT"/>-->
+<!--		</root>-->
+<!--	</springProfile>-->
+
+<!--	<springProfile name="live">-->
+<!--		<logger name="org.springframework" level="INFO"/>-->
+<!--		<root level="INFO">    &lt;!&ndash;  root 에 해당하는 대상을 STDOUT 형태와 FILE 형태를 적용 &ndash;&gt;-->
+<!--			<appender-ref ref="STDOUT"/>-->
+<!--		</root>-->
+<!--	</springProfile>-->
+</configuration>

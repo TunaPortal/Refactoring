@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="shortcut icon" th:href="@{/media/tuna_favicon.ico}">
+	<link rel="icon" th:href="@{/media/tuna_favicon.ico}">
+	<title>비밀번호 찾기</title>
+	
+	<link rel="stylesheet" th:href="@{/js/plugins/sweetalert2/sweetalert2.min.css}">
+	<script th:src="@{/js/plugins/sweetalert2/sweetalert2.min.js}"></script>
+	<script th:src="@{/js/dialog.js}"></script>
+	<link rel="stylesheet" id="css-main" th:href="@{/css/oneui.min.css}">
+</head>
+<body>
+	<div id="page-container">
+
+		<!-- Main Container -->
+		<main id="main-container">
+			<!-- Page Content -->
+			<div class="bg-primary">
+				<div class="row g-0 bg-primary-dark-op" th:style="|background-image: url('@{/media/tuna_login.jpg}'); background-size:contain;|">
+					<!-- Meta Info Section -->
+					<div
+						class="hero-static col-lg-4 d-none d-lg-flex flex-column justify-content-center">
+						<div class="p-4 p-xl-5 flex-grow-1 d-flex align-items-center">
+							<div class="w-100">
+							<img th:src="@{/media/tuna_logo.png}" style="display:block;width:30%;">
+								<a class="link-fx fw-semibold fs-2 text-white"
+									th:href="@{/custom/login}">
+									TUNA </a>
+									<p class="text-white-75 me-xl-8 mt-2">Welcome to your
+									portal.</p>
+							</div>
+						</div>
+						<div
+							class="p-4 p-xl-5 d-xl-flex justify-content-between align-items-center fs-sm">
+							<p class="fw-medium text-white-50 mb-0">
+								<strong>TUNA 0.1</strong> &copy; <span data-toggle="year-copy"></span>
+							</p>
+							<ul class="list list-inline mb-0 py-2">
+								<li class="list-inline-item"><a
+									class="text-white-75 fw-medium" href="javascript:void(0)">GitHub</a>
+								</li>
+							</ul>
+						</div>
+						
+					</div>
+					<!-- END Meta Info Section -->
+
+					<!-- Main Section -->
+					<div
+						class="hero-static col-lg-8 d-flex flex-column align-items-center bg-body-light">
+						<div class="p-3 w-100 d-lg-none text-center">
+		                	<a class="link-fx fw-semibold fs-3 text-dark" href="index.html">
+		                  	TUNA <span class="fw-normal">Portal</span>
+		                	</a>
+		                </div>
+						<div class="p-4 w-100 flex-grow-1 d-flex align-items-center">
+							<div class="w-100">
+								<!-- Header -->
+								<div class="text-center mb-5">
+									<h1 class="fw-bold mb-2">비밀번호 찾기</h1>
+									<p class="fw-medium text-muted">본인의 권한을 선택한 후,<br> 정보에 등록되어 있는 이메일 주소를 입력하세요.</p>
+								</div>
+								<!-- END Header -->
+
+								<form th:action="@{/custom/pwdEmailfind}" method="POST">
+									<div class="row g-0 justify-content-center">
+										<div class="col-sm-8 col-xl-4">
+												<div class="space-x-2 text-center mb-4">
+													<div class="form-check form-check-inline">
+														<input class="form-check-input" type="radio"
+																id="example-radios-inline1" name="user" value="1"
+																checked> <label class="form-check-label"
+																for="example-radios-inline1">학생</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input" type="radio"
+																id="example-radios-inline2" name="user" value="2">
+														<label class="form-check-label"
+																for="example-radios-inline2">교수</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input" type="radio"
+																id="example-radios-inline3" name="user" value="3">
+														<label class="form-check-label"
+																for="example-radios-inline3">교직원</label>
+													</div>
+												</div>
+											<div class="js-validation-reminder">
+												<input type="hidden" />
+												<div class="mb-4">
+													<input type="email"
+														class="form-control form-control-lg form-control-alt py-3"
+														id="reminder-credential" name="email"
+														placeholder="이메일">
+												</div>
+												
+												<div class="text-center mt-5">
+													<button type="submit" class="btn btn-lg btn-alt-primary">
+														<i class="fa fa-fw fa-envelope me-1 opacity-50"></i> 메일 보내기
+													</button>
+												</div>
+												<div class="text-center mt-3">
+						                            <a class="fs-sm fw-medium d-block d-lg-inline-block mb-1" href="login">
+						                              로그인으로 돌아가기
+						                            </a>
+					                            </div>
+											</div>
+										</div>
+
+									</div>
+
+
+								</form>
+							</div>
+							<!-- END Reminder Form -->
+						</div>
+						<div
+							class="px-4 py-3 w-100 d-lg-none d-flex flex-column flex-sm-row justify-content-between fs-sm text-center text-sm-start">
+							<p class="fw-medium text-black-50 py-2 mb-0">
+								<strong>TUNA 0.1</strong> &copy; <span data-toggle="year-copy"></span>
+							</p>
+							<ul class="list list-inline py-2 mb-0">
+								<li class="list-inline-item"><a class="text-muted fw-medium"
+									href="https://github.com/sajotuna/tunaportal" target="_blank">GitHub</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- END Main Section -->
+
+			</div>
+			<!-- END Page Content -->
+
+		</main>
+		<!-- END Main Container -->
+	</div>
+	<!-- END Page Container -->
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+	<!-- Page JS Code -->
+	<script th:src="@{/js/pages/op_auth_reminder.min.js}"></script>
+	<th:block th:if = "${(success != null && success != '') || (error != null && error != '')}">
+		<script th:inline="javascript">
+			let success = /*[[${success}]]*/ 'default';
+			let error = /*[[${error}]]*/ 'default';
+			if (success) {
+				Dialogs.dialog('success',/*[[#{title.suc.input}]]*/ 'default', success);
+			} else if (error) {
+				Dialogs.dialog('error', /*[[#{title.err.input}]]*/ 'default', error);
+			}
+		</script>
+	</th:block>
+	<script th:src="@{/js/oneui.app.min.js}"></script>
+	<script
+		th:src="@{/js/plugins/jquery-validation/jquery.validate.min.js}"></script>
+
+</body>
+</html>

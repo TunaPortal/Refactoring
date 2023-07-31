@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>강의공지상세</title>
+<link rel="stylesheet" th:href="@{/css/oneui.min.css}" />
+</head>
+<style>
+/* table tr th{
+white-space : normal;
+} */
+</style>
+<body>
+	<div id="page-container"
+		class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+		<!--
+ ██████  ██████  ███    ██ ████████ ███████ ███    ██ ████████ 
+██      ██    ██ ████   ██    ██    ██      ████   ██    ██    
+██      ██    ██ ██ ██  ██    ██    █████   ██ ██  ██    ██    
+██      ██    ██ ██  ██ ██    ██    ██      ██  ██ ██    ██    
+ ██████  ██████  ██   ████    ██    ███████ ██   ████    ██ 
+-->
+		<main>
+			<!-- <div class="bg-body-light">
+          <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+              <div class="flex-grow-1">
+                <h1 class="h3 fw-bold mb-2">
+                  Main
+                </h1>
+                <h2 class="fs-base lh-base fw-medium text-muted mb-0">
+                  E-class 홈 화면 입니다.
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div> content header END -->
+			<div class="content">
+				<div class="row">
+					<div class="col-12">
+						<h3 class="h3 fw-bold ms-">공지사항</h3>
+					</div>
+					<div class="block block-rounded">
+						<div class="block-content block-content-full">
+							<div id="DataTables_Table_0_wrapper"
+								class="dataTables_wrapper dt-bootstrap5 no-footer">
+								<div class="row">
+									<div class="col-sm-12">
+										<table
+											class="table table-bordered table-vcenter js-dataTable-full dataTable no-footer"
+											id="DataTables_Table_0"
+											aria-describedby="DataTables_Table_0_info" th:each="ns : ${ns}">
+												<tr>
+													<th class="text-center" tabindex="0" colspan="2" style="width:100px">제목</th>
+													<th colspan="5" style="width:378px" th:text="${ns.TITLE}"></th>
+													<th class="text-center" style="width:100px" colspan="2">작성일자</th>
+													<th colspan="3" style="width:200px" th:text="${ns.ENROLLDATE}"></th>
+												</tr>
+											<tbody>
+												<tr>
+													<th class="text-center" colspan="2" style="width:100px">내용</th>
+													<th colspan="10" style="height:500px; width:678px; overflow-y:scroll; vertical-align:top;" th:utext="${ns.content}"></th>
+												</tr>
+											</tbody>
+										</table>
+										<div class="d-flex justify-content-center">
+											<button type="button" th:onclick="|location.href='@{/stud/eclass/lectureNotice(sbjNo=${param.sbjNo})}'|"
+												class="btn btn-secondary m-2">목록으로</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xxl-12"></div>
+			<!-- col-12 end -->
+		</main>
+	</div>
+</body>
+</html>

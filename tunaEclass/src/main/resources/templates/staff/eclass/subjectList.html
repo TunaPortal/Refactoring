@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko"
+xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>E-Class 전체 강의</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" id="css-main" href="/css/oneui.min.css" />
+  </head>
+  <body>
+
+    <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+      <div id="page-overlay"></div>
+
+      <aside id="side-overlay">
+        <div class="content-header">
+        </div>
+        <div class="content-side">
+        </div>
+      </aside>
+
+      <!--
+███████ ██ ██████  ███████     ██████   █████  ██████  
+██      ██ ██   ██ ██          ██   ██ ██   ██ ██   ██ 
+███████ ██ ██   ██ █████       ██████  ███████ ██████  
+     ██ ██ ██   ██ ██          ██   ██ ██   ██ ██   ██ 
+███████ ██ ██████  ███████     ██████  ██   ██ ██   ██ 
+      -->
+      <nav id="sidebar" aria-label="Main Navigation">
+        <div class="content-header">
+
+        </div>
+        <div class="js-sidebar-scroll">
+        </div>
+      </nav>
+      <!-- SIDE BAR END -->
+      
+      <!--
+██   ██ ███████  █████  ██████  ███████ ██████  
+██   ██ ██      ██   ██ ██   ██ ██      ██   ██ 
+███████ █████   ███████ ██   ██ █████   ██████  
+██   ██ ██      ██   ██ ██   ██ ██      ██   ██ 
+██   ██ ███████ ██   ██ ██████  ███████ ██   ██                                     
+      -->
+      <header id="page-header">
+        <div class="content-header">page-header</div>
+      </header>
+      <!--HEADER END-->
+
+<!--
+ ██████  ██████  ███    ██ ████████ ███████ ███    ██ ████████ 
+██      ██    ██ ████   ██    ██    ██      ████   ██    ██    
+██      ██    ██ ██ ██  ██    ██    █████   ██ ██  ██    ██    
+██      ██    ██ ██  ██ ██    ██    ██      ██  ██ ██    ██    
+ ██████  ██████  ██   ████    ██    ███████ ██   ████    ██ 
+-->
+      <main id="main-container">
+        <!-- <div class="bg-body-light">
+          <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+              <div class="flex-grow-1">
+                <h1 class="h3 fw-bold mb-2">
+                  Main
+                </h1>
+                <h2 class="fs-base lh-base fw-medium text-muted mb-0">
+                  제목
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div> content header END -->
+
+        <div class="content">
+        	<div class="row justify-content-between">
+        		<h2 class="col-9 h3 fw-bold">전체 강의</h2>
+        		<div class="col-3">
+        			<select id="seasonSelector" class="form-select" onchange="changeSeasonData(event);">
+        				<option>
+        					<span>학기 데이터 없음</span>
+        				</option>
+        			</select>
+						</div>
+        	</div>
+          
+          <div th:if="${not #lists.isEmpty(subList)}">
+
+            <!-- block start -->
+            <div>
+            	<a class="block block-rounded block-link-pop border-start border-primary border-4" 
+             		th:href="@{/staff/eclass/subject(no=${sub.no})}">
+	              <div class="block-header block-header-default">
+	                <h3 class="block-title"> 
+	                    <span>데이터없음</span>
+	                  <small>[데이터없음]</small>
+	                </h3>
+	              </div>
+	              <div class="block-content">
+	                <div class="row">
+	                  <div class="col-6">
+	                    <p>
+	                      수강생: <span>데이터없음</span>명 <br>
+	                      학점: <span>데이터없음</span> <br>
+	                    </p>
+	                  </div>
+	                  <div class="col-6">
+	                    <p>
+	                      문의: <span>데이터없음</span> <br>
+	                    </p>
+	                  </div>
+	                </div>
+                  <div class="row text-center fs-sm">
+                    <div class="col-2 m-1 p-0">
+                      <span class="card card-body p-1"></span>
+                    </div>
+                  </div>
+	              </div>
+	            </a>
+            </div>
+             <!-- block end-->
+          </div>
+          
+        </div> <!-- content END -->
+
+        <!-- 모달 리스트 -->
+        <div class="modal" id="modal-block-normal" tabindex="-1" role="dialog" aria-labelledby="modal-block-normal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              Hello
+            </div>
+          </div>
+        </div>
+        <!-- 모달 리스트 END -->
+        <script>
+          let seasonParam;
+          window.onload = (e)=> {
+            initSelector();
+          }
+
+        	function changeSeasonData(e) {
+            let selectedSeason = e.target.selectedOptions[0].value;
+
+            let url = window.location.origin + window.location.pathname + "?season=" + selectedSeason;
+            
+            window.location.href = url;
+          }
+
+          function initSelector() {
+            let url = new URL(window.location.href);
+            let params = new URLSearchParams(url.searchParams);
+            seasonParam = params.get('season');
+
+            let selector = document.getElementById('seasonSelector');
+            for (let ele of selector.options) {
+              if(ele.value == seasonParam) {
+                ele.selected = true;
+                break;
+              }
+            };
+          }
+        </script>
+      </main>
+
+<!--
+███████  ██████   ██████  ████████ ███████ ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+█████   ██    ██ ██    ██    ██    █████   ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+██       ██████   ██████     ██    ███████ ██   ██ 
+-->
+      <!-- <footer id="page-footer" class="bg-flat-lighter">
+        <div class="content">footer</div>
+      </footer> -->
+    </div>
+    
+    <script src="/js/oneui.app.min.js"></script>
+  </body>
+</html>

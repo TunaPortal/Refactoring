@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+  	<meta charset="UTF-8" />
+  	<title>E-Class 전체 공지사항</title>
+	<link rel="stylesheet" th:href="@{/js/plugins/sweetalert2/sweetalert2.min.css}">
+	<script th:src="@{/js/plugins/sweetalert2/sweetalert2.min.js}"></script>
+	<script th:src="@{/js/dialog.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/oneui.min.css}" />
+  <style>
+  .line-hider-fluid { 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 49px;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    
+    line-height: 49px;
+  }
+  </style>
+</head>
+<body>
+      <main id="main-container">
+        <div class="content">
+		  <h3 class="h3 fw-bold">전체 공지사항</h3>
+          <div class="col-xxl-12">
+            <div class="block block-rounded" style="min-height:500px">
+                <table class="table table-hover js-table-checkable table-vcenter scroll-table m-0">
+                  <thead>
+                    <tr class="text-center fw-bold">
+                      <th style="width: 80px">번호</th>
+                      <th>제목</th>
+                      <th style="width: 15%">작성</th>
+                      <th style="width: 15%">등록일시</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:onclick="'window.location.href = \''+ @{/staff/eclass/notice(no=${notice.no})}+ '\''" th:each="notice:${noticeList}">
+                      <td class="text-center" th:text="${notice.no}">00</td>
+                      <td th:text="${notice.title}" class="text-start line-hider-fluid pt-0">제목데이터 없음</td>
+                      <td th:text="${notice.subjectVO.name}" class="text-center">과목 데이터없음</td>
+                      <td th:text="${notice.enrollDate}" class="text-center">날짜 없음</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+            </div> <!-- block end-->
+            <div class = "row">
+             <div class="col-md-6 d-flex justify-content-center justify-content-md-start">
+               <ul class="pagination pagination-sm mb-md-0">
+                 <li class="page-item">
+                   <button class="page-link" onclick="javascript:pageBtnClick(this);" style="width:25pt;height:25pt; font-size:16px;" th:text="${num}"></button>
+                 </li>
+               </ul>
+             </div>
+             <div class ="col-md-6 d-flex justify-content-center justify-content-md-end">
+               <input type="button" class = "btn btn-sm btn-primary col-2" onclick = "location.href = 'noticeForm';" value = "등록">
+             </div>
+         	</div>
+          </div>
+        </div> <!-- content END -->
+
+        <!-- 모달 리스트 -->
+        <!-- <div class="modal" id="modal-block-normal" tabindex="-1" role="dialog" aria-labelledby="modal-block-normal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              Hello
+            </div>
+          </div>
+        </div> -->
+        <!-- 모달 리스트 END -->
+        
+        
+        <th:block th:if = "${(#strings.equals(param.msg, '4'))}">
+			<script th:inline="javascript">
+				Dialogs.dialog('success', '완료', '삭제가 완료되었습니다.');
+			</script>
+		</th:block>
+		
+		<th:block th:if = "${pageNum != null || pageNum != ''}">
+			<script th:inline="javascript">
+				let btns = document.querySelectorAll('li > button')
+				let pageNum = /*[[${param.pageNum}]]*/
+				console.log(pageNum)
+				btns.forEach(btn=>{
+					if(btn.innerHTML == pageNum){
+						btn.parentElement.setAttribute("class", "page-item active")
+					}
+				})
+				
+			</script>
+		</th:block>
+		
+		<script>
+		   function pageBtnClick(e){
+			  location.href = 'noticeList?pageNum='+e.innerHTML;
+		   }
+		</script>
+		
+        
+      </main>
+
+<!--
+███████  ██████   ██████  ████████ ███████ ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+█████   ██    ██ ██    ██    ██    █████   ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+██       ██████   ██████     ██    ███████ ██   ██ 
+-->
+      <!-- <footer id="page-footer" class="bg-flat-lighter">
+        <div class="content">footer</div>
+      </footer> -->
+    </div>
+    
+  </body>
+</html>

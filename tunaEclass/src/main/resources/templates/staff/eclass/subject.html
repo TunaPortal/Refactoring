@@ -1,0 +1,2530 @@
+<!DOCTYPE html>
+<html lang="ko"
+xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!--
+████████ ██ ████████ ██      ███████ 
+   ██    ██    ██    ██      ██      
+   ██    ██    ██    ██      █████   
+   ██    ██    ██    ██      ██      
+   ██    ██    ██    ███████ ███████ 
+-->
+    <title>E-class 강의 상세</title>
+    <link rel="stylesheet" th:href="@{/js/plugins/sweetalert2/sweetalert2.min.css}">
+    <link rel="stylesheet" th:href="@{/js/plugins/flatpickr/flatpickr.min.css}">
+    <link rel="stylesheet" th:href="@{/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css}">
+      <link rel="stylesheet" th:href="@{/css/oneui.min.css}" />
+    <style>
+      .line-hider-fluid {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 49px;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        
+        line-height: 49px;
+      }
+
+      .line-hider-fluid-24 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        
+        height: 24px;
+        line-height: 24px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+      <div id="page-overlay"></div>
+
+      <aside id="side-overlay">
+        <div class="content-header">
+        </div>
+        <div class="content-side">
+        </div>
+      </aside>
+
+      <!--
+███████ ██ ██████  ███████     ██████   █████  ██████  
+██      ██ ██   ██ ██          ██   ██ ██   ██ ██   ██ 
+███████ ██ ██   ██ █████       ██████  ███████ ██████  
+     ██ ██ ██   ██ ██          ██   ██ ██   ██ ██   ██ 
+███████ ██ ██████  ███████     ██████  ██   ██ ██   ██ 
+      -->
+      <nav id="sidebar" aria-label="Main Navigation">
+        <div class="content-header">
+
+        </div>
+        <div class="js-sidebar-scroll">
+        </div>
+      </nav>
+      <!-- SIDE BAR END -->
+      
+      <!--
+██   ██ ███████  █████  ██████  ███████ ██████  
+██   ██ ██      ██   ██ ██   ██ ██      ██   ██ 
+███████ █████   ███████ ██   ██ █████   ██████  
+██   ██ ██      ██   ██ ██   ██ ██      ██   ██ 
+██   ██ ███████ ██   ██ ██████  ███████ ██   ██                                     
+      -->
+      <header id="page-header">
+        <div class="content-header">page-header</div>
+      </header>
+      <!--HEADER END-->
+
+<!--
+ ██████  ██████  ███    ██ ████████ ███████ ███    ██ ████████ 
+██      ██    ██ ████   ██    ██    ██      ████   ██    ██    
+██      ██    ██ ██ ██  ██    ██    █████   ██ ██  ██    ██    
+██      ██    ██ ██  ██ ██    ██    ██      ██  ██ ██    ██    
+ ██████  ██████  ██   ████    ██    ███████ ██   ████    ██ 
+-->
+      <main id="main-container">
+        <!-- <div class="bg-body-light">
+          <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+              <div class="flex-grow-1">
+                <h1 class="h3 fw-bold mb-2">
+                  Main
+                </h1>
+                <h2 class="fs-base lh-base fw-medium text-muted mb-0">
+                  E-class 홈 화면 입니다.
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div> content header END -->
+
+        <div class="content">
+
+          <div class="row">
+            <div class="col-xxl-7">
+              <h2 class="h3 fw-bold ms-3">강의 상세 내용</h2>
+              <div class="block block-rounded">
+                <div class="block-content">
+                  <h5 class="h5" >
+                    <span>이름 데이터 없음</span><small class="text-muted">&nbsp[
+                      <span>학기 데이터 없음</span>]
+                    </small></h5>
+                    <div>수강생  : <strong><span>데이터 없음</span> 명</strong></div>
+                    <div>학점 : <strong>데이터 없음</strong></div>
+                    <div>주차 : <strong><span></span>/ 16</strong></div>
+                    <div>기간 : <strong>
+                      <span>20??-??-??</span> ~
+                      <span>20??-??-??</span></strong></div>
+                    <div>문의 : <strong class="text-danger">??</strong></div>
+                    <div>평가 항목 : 
+                      <th:block>
+                        <strong>중간고사(<span>0</span>), 기말고사(<span>0</span>), 출석(<span>0</span>), 과제(<span>0</span>)</strong>
+                      </th:block>
+                    </div>
+                    <div class="pt-3 row">
+                      <div class="col-10 offset-1 col-xxl-3 offset-xxl-9">
+                        <button th:onclick="|location.href='@{/staff/eclass/subjectForm(no=${param.no})}'|" class="col-12 btn btn-primary">
+                          수정 
+                        </button>
+                      </div>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-5">
+              <h2 class="h3 fw-bold ms-3">강의 자료</h2>
+              <div class="block block-rounded">
+                <div class="block-content p-1">
+                  <div class="" id="subject_files" style="height: 222px; overflow-y: scroll;">
+                    <ul class="nav-items push">
+                      <th:block>
+                        <li class="p-2 list-group-item d-flex fs-sm text-primary-dark">
+                          <div class="flex-grow-1 m-0 row justify-content-between">
+                            <div class="col">
+                              <i class="far fa- fa-file"></i>&nbsp
+                              <a><span>이름 데이터 없음</span></a>
+                            </div>
+                            <div class="col-3">
+                              <span>??-??-??</span>
+                            </div>
+                            <div class="col-1 ">
+                              <button class="btn-block-option text-danger p-0">
+                                <i class="fa fa-fw fa-times"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </li>
+                      </th:block>
+                      <th:block >
+                        <li class="text-center text-muted m-4">강의자료가 없습니다!</li>
+                      </th:block>
+                    </ul>
+                  </div>
+                  <div class="col-10 offset-1 col-xxl-4 offset-xxl-8 px-3 pb-3">
+                    <button class="col-12 btn btn-primary"
+                    		data-bs-toggle="modal" data-bs-target="#fileInsertFrm">
+                      업로드
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- row end-->
+
+          <div class="row">
+            <div class="col-12">
+              <div id="subject-contents" class="block block-rounded">
+                <ul id="subject-tab-panel" class="nav nav-tabs nav-tabs-block" role="tablistr">
+                  <li class="nav-item">
+                    <button class="nav-link" id="btabs-static-progress-tab" data-bs-toggle="tab" 
+                    data-bs-target="#btabs-static-progress">강의 진도</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" id="btabs-static-student-tab" data-bs-toggle="tab" 
+                    data-bs-target="#btabs-static-student">수강생/출결</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" id="btabs-static-task-tab" data-bs-toggle="tab"
+                    data-bs-target="#btabs-static-task">과제</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" id="btabs-static-qna-tab" 
+                    data-bs-toggle="tab"
+                    data-bs-target="#btabs-static-qna">문의</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" id="btabs-static-notice-tab" 
+                    data-bs-toggle="tab"
+                    data-bs-target="#btabs-static-notice">공지사항</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" id="btabs-static-objection-tab" 
+                    data-bs-toggle="tab"
+                    data-bs-target="#btabs-static-objection">이의신청</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="nav-link" id="btabs-static-grade-tab" 
+                    data-bs-toggle="tab"
+                    data-bs-target="#btabs-static-grade">성적등록</button>
+                  </li>
+                </ul>
+
+                <div id="subject-tab-content" class="block-content tab-content position-relative">
+
+                  <div id="loaderCurtain" class="d-none">
+                    <div class="overflow-hidden bg-white-95 position-absolute top-0 start-0 w-100 h-100 opacity-75"></div>
+                    <span class="position-absolute top-50 start-50 translate-middle">
+                      <div class="spinner-border text-secondary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </span>
+                  </div>
+                  
+<!--
+      ██████  ██████   ██████   ██████  ██████  ███████ ███████ ███████ 
+▄ ██ ▄██   ██ ██   ██ ██    ██ ██       ██   ██ ██      ██      ██      
+ ████ ██████  ██████  ██    ██ ██   ███ ██████  █████   ███████ ███████ 
+▀ ██ ▀██      ██   ██ ██    ██ ██    ██ ██   ██ ██           ██      ██ 
+      ██      ██   ██  ██████   ██████  ██   ██ ███████ ███████ ███████ 
+-->
+                  <div class="tab-pane" id="btabs-static-progress" role="tabpanel" aria-labelledby="btabs-static-progress-tab">
+                    <div class="row">
+                      <div class="col-xxl-7">
+                        <div class="block block-rounded block-themed block-bordered">
+                          <div class="block-header bg-primary-darker">
+                            <h3 class="block-title">강의정보</h3>
+                          </div>
+                          <div id="subject-plan" class="block-content">
+                            <!-- <div>13주차 <span class="text-muted">[2022-06-17]</span><h5> 참치 민족의 부흥</h5></div>
+                            <p>
+                              <div>학습목표: 참치 문명의 발생과 생활 양식을 알 수 있다.</div>
+                              <div>과제: <span>멸치민족 조사하기</span></div>
+                              <div>2022-06-23 까지</div>
+                            </p> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xxl-5">
+                        <div class="block block-rounded block-themed block-bordered">
+                          <div class="block-header bg-primary-darker">
+                            <h3 class="block-title">강의 진도</h3>
+                          </div>
+                          <div class="block-content p-0" id="subject-progress" style="height: 300px; overflow-y: scroll;">
+                            <ul class="nav-items push">
+                              <!-- 
+                              <li>
+                                <a class="d-flex text-gray" id="progress-week1" href="javascript:void(0)">
+                                  <div class="d-flex py-3 bg-gray" style="width: 15px;"></div>
+                                  <div class="d-flex p-3 align-items-center">1 주차
+                                  </div>
+                                  <div class="py-1 fs-sm">
+                                    <div>참치 민족의 부흥</div>
+                                    <div>2022-06-17</div>
+                                    <div>참치역사관 402호</div>
+                                  </div>
+                                </a>
+                              </li>
+                              <li>
+                                <a class="d-flex text-primary-dark fw-semibold" id = "progress-week2"href="javascript:void(0)">
+                                  <div class="d-flex py-3 bg-default" style="width: 15px;"></div>
+                                  <div class="d-flex p-3 align-items-center">2 주차
+                                  </div>
+                                  <div class="py-1 small">
+                                    <div>참치 민족의 부흥</div>
+                                    <div>2022-06-17</div>
+                                    <div>참치역사관 402호</div>
+                                  </div>
+                                </a>
+                              </li>
+                              <li>
+                                <a class="d-flex text-primary-dark" href="javascript:void(0)">
+                                  <div class="d-flex py-3 bg-default-dark" style="width: 15px;"></div>
+                                  <div class="d-flex p-3 align-items-center">3 주차
+                                  </div>
+                                  <div class="py-1 small">
+                                    <div>참치 민족의 부흥</div>
+                                    <div>2022-06-17</div>
+                                    <div>참치역사관 402호</div>
+                                  </div>
+                                </a>
+                              </li> -->
+                            </ul>
+                            <!-- 강의 진도 list NED-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- progress TAB END-->
+<!-- @ studnet @ attendance
+      ███████ ████████ ██    ██ ██████  ███████ ███    ██ ████████ 
+▄ ██ ▄██         ██    ██    ██ ██   ██ ██      ████   ██    ██    
+ ████ ███████    ██    ██    ██ ██   ██ █████   ██ ██  ██    ██    
+▀ ██ ▀     ██    ██    ██    ██ ██   ██ ██      ██  ██ ██    ██    
+      ███████    ██     ██████  ██████  ███████ ██   ████    ██  
+-->
+                  <div class="tab-pane pb-3" id="btabs-static-student" role="tabpanel" aria-labelledby="btabs-static-student-tab">
+                    <form id="subject-attendance-form" onsubmit="return false;">
+                      <div class="row">
+                        <div class="col-xl-3 align-self-center">
+                          <span class="fs-lg fw-bold" id="attendance_date_text">####-## (##)</span>
+                        </div>
+                        <div class="offset-5 col-xl-2">
+                          <button class="col-12 btn btn-dark" onclick="allStudentAttend()">전체 출석</button>
+                        </div>
+                        <div class="col-xl-2">
+                          <button class="col-12 btn btn-primary submit_button" id="attendance_submit">적용</button>
+                        </div>
+                      </div>
+                      <hr class="mb-0">
+                      <div style="overflow-y:scroll; height: 300px;">
+                        <table id="subject-attendance-table" class="table table-hover table-vcenter">
+                            <tbody>
+                            </tbody>
+                        </table>
+                      </div>
+                    </form>
+                    
+                  </div> <!-- student TAB CONTENT END -->
+
+<!--
+      ████████  █████  ███████ ██   ██ 
+▄ ██ ▄   ██    ██   ██ ██      ██  ██  
+ ████    ██    ███████ ███████ █████   
+▀ ██ ▀   ██    ██   ██      ██ ██  ██  
+         ██    ██   ██ ███████ ██   ██ 
+-->
+                  <div class="tab-pane pb-3" id="btabs-static-task" role="tabpanel" aria-labelledby="btabs-static-task-tab">
+                    <div style="overflow-y:scroll; overflow-x:scroll; height: 305px;">
+                      <table id="task-table" class="table table-hover table-vcenter ">
+                        <thead>
+                          <tr>
+                            <th>이름</th>
+                            <th>학과</th>
+                            <th>학번</th>
+                            <th style="width: 25%">제출</th>
+                            <th>제출시간</th>
+                            <th style="width: 90px">점수</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- <tr class="m-0">
+                            
+                            <td class="table-cell">
+                              <a class="" href="javascript:void(0);">김철수</a>
+                            </td>
+                            <td class="table-cell">
+                                참치공학
+                            </td>
+                            <td class="table-cell">
+                              1053099
+                            </td>
+                            <td class="table-cell">
+                              <i class="fa fa-2x fa-file-arrow-down"></i>
+                            </td>
+                            <td class="table-cell text-primary">
+                              <a href="javascript:void(0);">김철수_멸치족의 역사.zip (925 kb)</a>
+                            </td>
+                            <td class="table-cell">
+                              07-06 16:14
+                            </td>
+                            <td class="table-cell">
+                              <input type="number" class="form-control" placeholder="">
+                            </td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="pt-2 row justify-content-center">
+                      <div class="col-xxl-2 col-10 mb-xsl-0 mb-2">
+                        <button type="button" 
+                          class="col-12 btn btn-primary"
+                          data-bs-toggle="modal" 
+                          data-bs-target="#taskInsertFrm">과제 등록
+                        </button>
+					            </div>
+                      <div class="col-xxl-5 col-10 mb-xsl-0 mb-2">
+                        <select class="form-select" id="task-selector" name="example-select">
+                          <!-- <option value="1">과제 #1</option>
+                          <option value="2">과제 #2</option>
+                          <option value="3">과제 #3</option> -->
+                        </select>
+                      </div>
+                      <div class="col-xxl-2 col-10 mb-xsl-0 mb-2 align-self-center">
+                        <span>마감 : </span><span id="task-limit">테스트</span>
+                      </div>
+                      <div class="col-xxl-2 col-10">
+                        <!-- <button class="col-12 btn btn-dark">전체 다운로드</button> -->
+                      </div>
+                      <div class="col-xxl-1 col-10">
+                        <button id="task-score-submit" class="col-12 btn btn-primary">적용</button>
+                      </div>
+                    </div>
+                  </div> <!-- task TAB END -->
+<!--
+       ██████  ███    ██  █████  
+▄ ██ ▄██    ██ ████   ██ ██   ██ 
+ ████ ██    ██ ██ ██  ██ ███████ 
+▀ ██ ▀██ ▄▄ ██ ██  ██ ██ ██   ██ 
+       ██████  ██   ████ ██   ██ 
+          ▀▀                    
+-->
+                  <div class="tab-pane pb-3" id="btabs-static-qna" role="tabpanel" aria-labelledby="btabs-static-qna-tab">
+                    <div id="qna-content" class="" style="height: 310px; overflow-y: scroll;">
+                      <ul class="nav-items push">
+                        <!-- <li><a class="d-flex text-primary-dark py-2" href="javascript:void(0)">
+                          <div class="col-1 d-none d-lg-block text-center text-danger">대기</div>
+                          <div class="col-1 d-none d-lg-block text-center text-gray">비공개</div>
+                          <div class="col-6">안녕하세요 교수님? 궁금한게 있는데요</div>
+                          <div class="col-2 fw-bold text-end">김철수</div>
+                          <div class="col text-center">07-06</div>
+                        </a></li>
+                        <li><a class="d-flex text-primary-dark py-2" href="javascript:void(0)">
+                          <div class="col-1 d-none d-lg-block text-center text-success">완료</div>
+                          <div class="col-1 d-none d-lg-block text-center text-gray">비공개</div>
+                          <div class="col-6">안녕하세요 교수님? 궁금한게 있는데요</div>
+                          <div class="col-2 fw-bold text-end">김철수</div>
+                          <div class="col text-center">07-06</div>
+                        </a></li>
+                        <li><a class="d-flex text-primary-dark py-2" href="javascript:void(0)">
+                          <div class="col-1 d-none d-lg-block text-center text-danger">대기</div>
+                          <div class="col-1 d-none d-lg-block text-center">공개</div>
+                          <div class="col-6">안녕하세요 교수님? 궁금한게 있는데요</div>
+                          <div class="col-2 fw-bold text-end">김철수</div>
+                          <div class="col text-center">07-06</div>
+                        </a></li> -->
+                      </ul>
+                    </div>
+                    <div class="pt-2 row">
+                      <div class="col-xl-2">
+                        <button th:href="@{/staff/eclass/qnaList}" class="col-12 btn btn-dark">전체보기</button>
+                      </div>
+                    </div>
+                  </div> <!-- qna TAB END -->
+<!-- @ notice
+        ███    ██  ██████  ████████ ██  ██████ ███████ 
+▄ ██ ▄  ████   ██ ██    ██    ██    ██ ██      ██      
+ ████   ██ ██  ██ ██    ██    ██    ██ ██      █████   
+▀ ██ ▀  ██  ██ ██ ██    ██    ██    ██ ██      ██      
+        ██   ████  ██████     ██    ██  ██████ ███████  
+-->
+                  <div class="tab-pane" id="btabs-static-notice" role="tabpanel" aria-labelledby="btabs-static-notice-tab">
+                    <table id="subject-notice-table" class="js-table-checkable table table-hover table-vcenter text-center table-bordered"> 
+                      <thead>
+                        <tr>
+                          <th style="width: 100px">번호</th>
+                          <th class="text-start">제목</th>
+                          <th style="width: 15%">등록일</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <div class="col-xl-2">
+                        <button id="subject-notice-write-btn" class="col-12 btn btn-dark"> 공지 작성 </button>
+                      </div>
+                      <div class="col-xl-2">
+                        <button id="subject-notice-all-btn" class="col-12 btn btn-primary">전체 보기</button>
+                      </div>
+                    </div>
+                    <p></p>
+                  </div> <!-- notice TAB END -->
+<!--
+       ██████  ██████       ██ ███████  ██████ ████████ ██  ██████  ███    ██ 
+▄ ██ ▄██    ██ ██   ██      ██ ██      ██         ██    ██ ██    ██ ████   ██ 
+ ████ ██    ██ ██████       ██ █████   ██         ██    ██ ██    ██ ██ ██  ██ 
+▀ ██ ▀██    ██ ██   ██ ██   ██ ██      ██         ██    ██ ██    ██ ██  ██ ██ 
+       ██████  ██████   █████  ███████  ██████    ██    ██  ██████  ██   ████
+-->
+                  <div class="tab-pane" id="btabs-static-objection" role="tabpanel" aria-labelledby="btabs-static-objection-tab">
+					<div class="mb-4" style="height:345px; overflow-y:scroll;">
+	                    <table id="subject-objection-table" class="table table-hover table-vcenter mb-0">
+	                      <thead>
+	                        <tr>
+	                          <th>학생명</th>
+	                          <th>등급</th>
+	                          <th>평점</th>
+	                          <th>이의신청일</th>
+	                          <th>답변일</th>
+	                          <th>신청상태</th>
+	                        </tr>
+	                      </thead>
+                        <tbody>
+
+                        </tbody>
+	                     </table>
+                     </div>
+                  </div>  <!-- objection TAB END -->
+<!-- *GRADE
+       ██████  ██████   █████  ██████  ███████ 
+▄ ██ ▄██       ██   ██ ██   ██ ██   ██ ██      
+ ████ ██   ███ ██████  ███████ ██   ██ █████   
+▀ ██ ▀██    ██ ██   ██ ██   ██ ██   ██ ██      
+       ██████  ██   ██ ██   ██ ██████  ███████
+-->
+                  <div class="tab-pane" id="btabs-static-grade" role="tabpanel" aria-labelledby="btabs-static-grade-tab">
+                    <div style="overflow-y:scroll; height: 310px;">
+                      <table id="subject-grade-table" class="table table-hover table-vcenter text-center">
+                        <thead>
+                          <tr>
+                            <th style="width:10%">이름</th>
+                            <th style="width:10%">전공</th>
+                            <th style="width:10%">학번</th>
+                            <th style="width:10%">출결</th>
+                            <th style="width:10%">중간고사</th>
+                            <th style="width:10%">기말고사</th>
+                            <th style="width:10%">과제평균</th>
+                            <th style="width:10%">총점</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- <tr class="m-0">
+                            
+                            <td class="table-cell">
+                              김철수
+                            </td>
+                            <td class="table-cell">
+                                참치공학
+                            </td>
+                            <td class="table-cell">
+                              1053099
+                            </td>
+                            <td><input type="number" class="form-control" placeholder="10" disabled></td>
+                            <td><input type="number" class="form-control" placeholder=""></td>
+                            <td><input type="number" class="form-control" placeholder=""></td>
+                            <td><input type="number" class="form-control" placeholder="100" disabled></td>
+                            <td><input type="number" class="form-control" placeholder="100" disabled></td>
+                          </tr>
+                          <tr class="m-0">
+                            
+                            <td class="table-cell">
+                              김철수
+                            </td>
+                            <td class="table-cell">
+                                참치공학
+                            </td>
+                            <td class="table-cell">
+                              1053099
+                            </td>
+                            <td><input type="number" class="form-control" placeholder="10" disabled></td>
+                            <td><input type="number" class="form-control" placeholder=""></td>
+                            <td><input type="number" class="form-control" placeholder=""></td>
+                            <td><input type="number" class="form-control" placeholder="100" disabled></td>
+                            <td><input type="number" class="form-control" placeholder="100" disabled></td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="pt-2 row">
+                      <div class="offset-xl-10 col-xl-2">
+                        <button class="col-12 btn btn-dark" onclick="studentsGradeSubmitEvent()">저장</button>
+                      </div>
+                    </div>
+                    <p></p>
+                  </div><!-- grade TAB END-->
+
+                </div> <!-- tab content END-->
+
+              </div>
+            </div>
+          </div>
+        </div> <!-- content END -->
+<!--
+███    ███  ██████  ██████   █████  ██      
+████  ████ ██    ██ ██   ██ ██   ██ ██      
+██ ████ ██ ██    ██ ██   ██ ███████ ██      
+██  ██  ██ ██    ██ ██   ██ ██   ██ ██      
+██      ██  ██████  ██████  ██   ██ ███████
+-->
+        <!-- 모달 리스트 -->
+        <!-- 강의 자료 등록 Modal -->
+		<div class="modal" id="fileInsertFrm" tabindex="-1" role="dialog" aria-labelledby="modal-block-vcenter" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg"role="document">
+				<div class="modal-content">
+					<div class="block block-rounded block-transparent mb-0">
+						<div class="block-header block-header-default bg-dark">
+							<h3 class="block-title text-gray-lighter">강의 자료 등록</h3>
+							<div class="block-options">
+								<button type="button" class="close-btn btn-block-option"
+									data-bs-dismiss="modal" aria-label="Close">
+									<i class="fa fa-fw fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<div class="block-content block-content-full text-center">
+							<div class="fw-semibold fs-sm m-3">
+								<input class="input-title form-control" type="text" placeholder="제목을 입력하세요." style="width:100%;">
+							</div>
+							<div class="fw-semibold fs-sm m-3">
+								<input type="file" class="input-file form-control mb-0"></input>
+							</div>
+								<button class="submitBtn btn btn-sm btn-dark px-3 mb-3">등록</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END 강의 자료 등록 -->
+        <!-- 과제 등록 Modal -->
+		<div class="modal" id="taskInsertFrm" tabindex="-1" role="dialog" aria-labelledby="modal-block-vcenter" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg"role="document">
+				<div class="modal-content">
+					<div class="block block-rounded block-transparent mb-0">
+						<div class="block-header block-header-default bg-dark">
+							<h3 class="block-title text-gray-lighter">과제 등록</h3>
+							<div class="block-options">
+								<button type="button" class="close-btn btn-block-option"
+									data-bs-dismiss="modal" aria-label="Close">
+									<i class="fa fa-fw fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<div class="block-content block-content-full text-center">
+							<div class="fw-semibold fs-sm m-3">
+								<input id="task-title" class="form-control" type="text" placeholder="제목을 입력하세요." style="width:100%;">
+							</div>
+							<div class="fw-semibold fs-sm m-3">
+                  <div class="input-daterange input-group" data-date-format="yyyy-mm-dd" data-week-start="1" data-autoclose="true" data-today-highlight="true">
+							      <input type="text" class="form-control date" id="task-start-input" name="" placeholder="제출 시작일" 
+							             data-week-start="1" data-autoclose="true" data-today-highlight="true">
+							      <span class="input-group-text fw-semibold">
+							        <i class="fa fa-fw fa-arrow-right"></i>
+							      </span>
+							      <input type="text" class="form-control date" id="task-limit-input" name="" placeholder="제출 종료일" 
+							             data-week-start="1" data-autoclose="true" data-today-highlight="true">
+							    </div>
+			                </div>
+							<div class="fw-semibold fs-sm m-3">
+								<textarea id="task-content" class="form-control mb-0" placeholder="내용을 입력하세요." style="width:100%; height:300px; resize:none;"></textarea>
+							</div>
+								<button class="submitBtn btn btn-sm btn-dark px-3 mb-3">등록</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<!-- END 과제 등록 -->
+        <!-- Objection Modal -->
+		<div class="modal" id="objection" tabindex="-1" role="dialog" aria-labelledby="modal-block-vcenter" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg"role="document">
+				<div class="modal-content">
+					<div class="block block-rounded block-transparent mb-0">
+						<div class="block-header block-header-default bg-dark">
+							<h3 class="block-title text-gray-lighter">성적 이의신청 상세 조회 및 답변 등록</h3>
+							<div class="block-options">
+								<button type="button" class="btn-block-option"
+									data-bs-dismiss="modal" aria-label="Close">
+									<i class="fa fa-fw fa-times"></i>
+								</button>
+							</div>
+						</div>
+						
+							<!-- Objection Insert Form -->
+								<table class="table table-vcenter mb-0">
+									<tr>
+										<th scope="row" class="d-none d-xl-table-cell fw-semibold fs-sm table-active" width=130>과목명</th>
+										<td id="objSbjName" class="fw-semibold fs-sm" width=200></td>
+										<th class="d-none d-xl-table-cell fw-semibold fs-sm table-active" width=100>학생명</th>
+										<td id="objStname" class="fw-semibold fs-sm"></td>
+										<th class="d-none d-xl-table-cell fw-semibold fs-sm table-active" width=100>신청상태</th>
+										<td id="objState" class="fw-semibold fs-sm"></td>
+									</tr>
+									<tr>
+										<th scope="row" class="d-none d-xl-table-cell fw-semibold fs-sm table-active" width=130>이의신청 내용</th>
+										<td id="objContent" class="fw-semibold fs-sm" colspan="5"></td>
+									</tr>
+									<tr>
+										<th scope="row" class="d-none d-xl-table-cell fw-semibold fs-sm table-active"width=130>답변</th>
+										<td class="fw-semibold fs-sm" colspan="5">
+											<textarea id="objAnswer" class="mb-0 form-control" rows="4" placeholder="내용을 입력하세요." style="width:100%; resize:none;" disabled></textarea>
+										</td>
+									</tr>
+								</table>
+							<!-- END Objection Insert Form -->
+						
+						<div class="block-content block-content-full text-center">
+							<button id="objUpdateBtn" class="btn btn-sm btn-primary px-3">등록</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<!-- END Objection Modal -->
+        <div class="modal" id="modal-block-tabs" tabindex="-1" role="dialog" aria-labelledby="modal-block-tabs" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="block block-rounded block-transparent mb-0">
+                <ul class="nav nav-tabs nav-tabs-block" role="tablist">
+                  <li class="nav-item">
+                    <button type="button" class="nav-link active" id="btabs-info-tab" data-bs-toggle="tab" data-bs-target="#btabs-info" role="tab" aria-controls="btabs-info" aria-selected="true">학생정보</button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="nav-link" id="btabs-attendance-tab" data-bs-toggle="tab" data-bs-target="#btabs-attendance" role="tab" aria-controls="btabs-attendance" aria-selected="false">출결관리</button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="nav-link" id="btabs-grade-tab" data-bs-toggle="tab" data-bs-target="#btabs-grade" role="tab" aria-controls="btabs-grade" aria-selected="false">성적관리</button>
+                  </li>
+                </ul>
+              <!--
+              ███    ███        ██████  ██████  ███    ██ ████████ ███████ ███    ██ ████████ 
+              ████  ████       ██      ██    ██ ████   ██    ██    ██      ████   ██    ██    
+              ██ ████ ██ █████ ██      ██    ██ ██ ██  ██    ██    █████   ██ ██  ██    ██    
+              ██  ██  ██       ██      ██    ██ ██  ██ ██    ██    ██      ██  ██ ██    ██    
+              ██      ██        ██████  ██████  ██   ████    ██    ███████ ██   ████    ██
+              -->
+                <div id="user_detail_modal" class="block-content tab-content">
+                  <div id="userDetailCurtain" class="">
+                    <div class="overflow-hidden bg-white-95 position-absolute top-0 start-0 w-100 h-100 opacity-75"></div>
+                    <span class="position-absolute top-50 start-50 translate-middle">
+                      <div class="spinner-border text-secondary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </span>
+                  </div>
+
+                  <div class="tab-pane active" id="btabs-info" role="tabpanel" aria-labelledby="btabs-info-tab">
+                    <div class="row row-cols-auto">
+                      <div class="col-1 d-none d-lg-block text-end">
+                        <div>이름</div>
+                        <div>학번</div>
+                        <div>연락처</div>
+                      </div>
+                      <div class="col-3 fw-bold">
+                        <div class="align-items-center">
+                          <div><span id="detail-name">######</span>&nbsp;
+                            <span id="detail-dept" class="fw-medium fs-sm text-muted">####</span></div>
+                          <div id="detail-no">########</div>
+                          <div id="detail-phone">###-####-####</div>
+                        </div>
+                      </div>
+                      <div class="col-1 d-none d-lg-block text-end">
+                        <div>email</div>
+                        <div>생년월일</div>
+                        <div>주소</div>
+                      </div>
+                      <div class="col fw-bold">
+                        <div id="detail-email">###@#####.###</div>
+                        <div id="detail-birth">##/##/##</div>
+                        <div id="detail-addr">########## #### ###### ######## ###</div>
+                      </div>
+                    </div>
+                    <p></p>
+                    <!-- 학생 정보 TOP  END-->
+
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="block block-rounded block-themed block-bordered bg-black-5">
+                          <div class="block-header bg-primary-darker">
+                            <div class="block-title">과제제출</div>
+                          </div>
+                          <div class="block-content py-0" style="overflow-y:scroll; height: 200px;">
+                            <table class="table table-hover table-vcenter fs-sm">
+                              <tbody id="detail-task-list">
+                                <!-- <tr>
+                                  <td>참치공학</td>
+                                  <td>과제#1</td>
+                                  <td class="table-cell">
+                                    <i class="fa fa-file-arrow-down"></i>
+                                  </td>
+                                  <td class="text-primary">
+                                    <a href="javascript:void(0);">김철수_멸치족의 역사.zip</a>
+                                  </td>
+                                  <td>22-07-06 16:14</td>
+                                </tr> -->
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="block block-rounded block-themed block-bordered bg-black-5">
+                          <div class="block-header bg-primary-darker">
+                            <div class="block-title">문의내역</div>
+                          </div>
+                          <div class="block-content py-0" style="overflow-y:scroll; height: 200px;">
+                            <ul id="detail-qna-list" class="nav-items push fs-sm">
+                              <!-- <li><a class="d-flex text-primary-dark py-2" href="javascript:void(0)">
+                                <div class="col-2 text-center">참치공학</div>
+                                <div class="col-1 d-none d-lg-block text-center text-danger">대기</div>
+                                <div class="col-1 d-none d-lg-block text-center text-gray">비공개</div>
+                                <div class="col-7">안녕하세요 교수님? 궁금한게 있는데요</div>
+                                <div class="col-1 d-none d-lg-block text-center">07-06</div>
+                              </a></li> -->
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- 학생정보 BOT END-->
+                  </div> <!-- 학생정보 탭 END -->
+
+                  <div class="tab-pane" id="btabs-attendance" role="tabpanel" aria-labelledby="btabs-attendance-tab">
+                    <div class="row">
+                      <div id="atten-block-list" class="col-12">
+                        <div class="block block-rounded block-themed block-bordered border-1">
+                          <div class="block-header bg-primary-darker">
+                            <div class="block-title">참치 분해학</div>
+                            <div>
+                              <button class="btn btn-sm btn-primary">적용</button>
+                            </div>
+                          </div>
+                          <div class="block-content p-0" style="overflow-x: scroll;">
+                            <table class="table table-vcenter table-bordered text-center mb-0 table-bordered border-dark border-2">
+                              <thead>
+                                <tr>
+                                  <th class="p-1" style="min-width: 50px;">종합</th>
+                                  <th class="p-0">03/01</th>
+                                  <th class="p-0">03/08</th>
+                                  <th class="p-0">03/15</th>
+                                  <th class="p-0">03/22</th>
+                                  <th class="p-0">03/29</th>
+                                  <th class="p-0">04/05</th>
+                                  <th class="p-0">04/12</th>
+                                  <th class="p-0">04/19</th>
+                                  <th class="p-0">04/26</th>
+                                  <th class="p-0">03/01</th>
+                                  <th class="p-0">03/08</th>
+                                  <th class="p-0">03/15</th>
+                                  <th class="p-0">03/22</th>
+                                  <th class="p-0">03/29</th>
+                                  <th class="p-0">04/05</th>
+                                  <th class="p-0">04/12</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="m-0">
+                                  <td class="p-0">
+                                    <div class="p-1">35</div>
+                                    <div class="p-1">2</div>
+                                    <div class="p-1">0</div>
+                                  </td>
+                                  <td class="p-0">
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0301" id="atten0301-1" autocomplete="off" checked />
+                                      <label class="btn btn-outline-success p-1" for="atten0301-1">출석</label>
+                                    </div>
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0301" id="atten0301-2" autocomplete="off" />
+                                      <label class="btn btn-outline-warning p-1" for="atten0301-2">지각</label>
+                                    </div>
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0301" id="atten0301-3" autocomplete="off" />
+                                      <label class="btn btn-outline-danger p-1" for="atten0301-3">결석</label> 
+                                    </div>
+                                  </td>
+                                  <td class="p-0">
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0308" id="atten0308-1" autocomplete="off" checked />
+                                      <label class="btn btn-outline-success p-1" for="atten0308-1">출석</label>
+                                    </div>
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0308" id="atten0308-2" autocomplete="off" />
+                                      <label class="btn btn-outline-warning p-1" for="atten0308-2">지각</label>
+                                    </div>
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0308" id="atten0308-3" autocomplete="off" />
+                                      <label class="btn btn-outline-danger p-1" for="atten0308-3">결석</label> 
+                                    </div>
+                                  </td>
+                                  <td class="p-0">
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0315" id="atten0315-1" autocomplete="off" checked />
+                                      <label class="btn btn-outline-success p-1" for="atten0315-1">출석</label>
+                                    </div>
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0315" id="atten0315-2" autocomplete="off" />
+                                      <label class="btn btn-outline-warning p-1" for="atten0315-2">지각</label>
+                                    </div>
+                                    <div>
+                                      <input type="radio" class="btn-check" name="atten0315" id="atten0315-3" autocomplete="off" />
+                                      <label class="btn btn-outline-danger p-1" for="atten0315-3">결석</label> 
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div> 
+                    
+                  </div> <!-- 출결관리 탭 END -->
+
+                  <div class="tab-pane" id="btabs-grade" role="tabpanel" aria-labelledby="btabs-grade-tab">
+                    <div id="grade-block-list" class="col-12">
+
+                      <div class="block block-rounded block-themed block-bordered border-1">
+                        <div class="block-header bg-primary-darker">
+                          <div class="block-title">
+                            참치 분해학
+                          </div>
+                        </div>
+                        <div class="block-content p-0" style="overflow-x: scroll;">
+                          <table class="table table-hover table-vcenter text-center m-0">
+                            <thead>
+                              <tr>
+                                <th style="min-width: 90px;">출결</th>
+                                <th style="min-width: 90px;">중간고사</th>
+                                <th style="min-width: 90px;">기말고사</th>
+                                <th style="min-width: 90px;">과제평균</th>
+                                <th style="min-width: 90px;">총점</th>
+                                <th style="min-width: 120px;"></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="m-0">
+                                <td><input type="number" class="form-control" placeholder="10" disabled></td>
+                                <td><input type="number" class="form-control" placeholder=""></td>
+                                <td><input type="number" class="form-control" placeholder=""></td>
+                                <td><input type="number" class="form-control" placeholder="100" disabled></td>
+                                <td><input type="number" class="form-control" placeholder="100" disabled></td>
+                                <td><button class="btn btn-primary">적용</button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div> <!-- block END-->
+                    </div>
+
+                  </div> <!-- 성적관리 탭 END-->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- 모달 리스트 END -->
+        <!-- 
+          <div class="col px-0 mx-0">
+            <div class="item item-circle bg-success py-1 my-1 mx-auto px-0">
+              <span class="fs-lg fw-bold text-white-75">35</span>
+            </div>
+            <div>출석</div>
+          </div>
+          <div class="col px-0 mx-0">
+            <div class="item item-circle bg-warning py-1 my-1 mx-auto px-0">
+              <span class="fs-lg fw-bold text-white-75">2</span>
+            </div>
+            <div>지각</div>
+          </div>
+          <div class="col px-0 mx-0">
+            <div class="item item-circle bg-danger py-1 my-1 mx-auto px-0">
+              <span class="fs-lg fw-bold text-white-75">0</span>
+            </div>
+            <div>결석</div>
+          </div>
+         -->
+<!-- @ script
+███████  ██████ ██████  ██ ██████  ████████ 
+██      ██      ██   ██ ██ ██   ██    ██    
+███████ ██      ██████  ██ ██████     ██    
+     ██ ██      ██   ██ ██ ██         ██    
+███████  ██████ ██   ██ ██ ██         ██    
+-->
+          <script>
+            // 상수데이터
+            const TAB_ID = "tab-pane-";
+            const GRADE_STUD_ID = "student-";
+            const LECTURE_FILE_ID = "lecture-file-";
+            const RADIO_GROUP_NAME = "radio-group-";
+            const ATTENDANCE_SUBJECT_ID = "attendance_subject_";
+            const DETIAL_ATTENDANCE_BLOCK_ID = "attendance_block_";
+            const GRADE_SBUJECT_ID = "grade_sbuject_";
+            const DETAIL_GRADE_BLOCK_ID = "grade_block_"
+            
+            const DETAIL_INPUT_MIDDLE = "grade_input_middle_";
+            const DETAIL_INPUT_FINALS = "grade_input_finals_";
+            
+            const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
+
+            const REST_URL = {
+              STUDENT_DETAIL : "/tuna/staff/student",
+              PROGRESS_CONTENT : "/tuna/staff/lecPlans",
+              ATTENDANCE_CONTENT : "/tuna/staff/attendance",
+              TASK_CONTENT : "/tuna/staff/task/content",
+              QNA_CONTENT : "/tuna/staff/lecQna",
+              NOTICE_CONTENT : "/tuna/staff/lecNotices",
+              OBJECTION_CONTENT : "/tuna/staff/objections",
+              GRADE_CONTENT : "/tuna/staff/students",
+
+              GRDAES_UPDATE : "/tuna/staff/updateGrades",
+              GRADE_UPDATE : "/tuna/staff/updateGrade",
+              TASK_INSERT : '/tuna/staff/insertTask',
+              OBJECTION_GET : '/tuna/staff/eclass/objection?objNo=',
+              OBJECTION_PUT : '/tuna/staff/eclass/objection',
+              OBJECTION_LIST : "/tuna/staff/objections",
+
+              SUBMIT_TASK_GRADE_UPDATE : "/tuna/staff/eclass/updateSubmitTaskScore",
+              SUBMIT_LECTURE_FILE_UPLOAD : "/tuna/staff/insertSubjectFile",
+              SUBMIT_ATTENDANCES : "/tuna/staff/insert/attendance",
+              SUBMIT_ATTENDANCES_UPDATE : "/tuna/staff/update/attendance",
+              LECTURE_FILE_DELETE : "/tuna/staff/deleteSubjectFile",
+              
+              SUBJECT_QNA_LINK : "/tuna/staff/eclass/qna",
+            };
+            // const TAB_BTN_NUM = {
+
+            // }
+            
+
+            // 토큰
+            let header = document.querySelector('meta[name="_csrf_header"]').content;
+            let token = document.querySelector('meta[name="_csrf"]').content;
+
+            //  파라미터
+            let g_url = new URL(window.location.href);
+            let params = new URLSearchParams(g_url.searchParams);
+            let sbjno = params.get('no')*1; // 파라미터
+            let msg = params.get('msg');
+
+            let taskno = 0; // TODO 과제 선택
+
+            // 탭 제어
+            let tabFlag = new Map();
+            let onTab = -1;
+            let tabPanel; // 탭 패널
+            let tabContents; // 탭 컨탠츠
+            let userDetailModal; //
+            let onAttendanceEvent = -1;
+            
+            // 로딩 출력
+            let loaderCurtain;
+            let userDetailCurtain;
+
+            //
+            let studentsGradeTr = [];
+            let studentsTaskTr = [];
+            
+            // callback func
+            let callbackFunc = function() {return null;};
+            let selectedStudentNo = 0;
+
+            function alertEvent(){
+              alert("wow!!?");
+            }
+
+            // 로드 이벤트
+            window.addEventListener("DOMContentLoaded", function() {
+              // let subjectContents = document.querySelector("#subject-content");
+              tabPanel = document.querySelector("#subject-tab-panel");
+              tabContents = document.querySelectorAll("#subject-tab-content>div");
+              loaderCurtain = document.querySelector('#loaderCurtain');
+              userDetailCurtain = document.querySelector('#userDetailCurtain');
+              userDetailModal = document.querySelector('#user_detail_modal');
+
+              initSubject();
+              initTaskInsertForm();
+              initTaskScoreSubmit();
+              objTrClickEvent();
+              objUpdateClickEvent();
+              initFileInsertForm();
+              initNoticeWriteButton();
+              initNoticeAllButton();
+            });
+
+            // 초기화 세팅
+            function initSubject() {
+              // 탭클릭 이벤트 등록
+              tabPanel.addEventListener('click', function(ele) {
+                let id = ele.target.parentNode.id;
+                id = id.slice(id.indexOf(TAB_ID)+TAB_ID.length);
+                tabClickEvent(  parseInt(id) );
+              })
+              // 탭 제어 초기화
+              for(let i = 0; i < tabPanel.children.length; i++) {
+                tabPanel.children[i].setAttribute('id', TAB_ID+i);
+                if(!msg) {
+                  tabPanel.children[0].querySelector('button').click();
+                } else {
+                  if(i == msg) {
+                    tabPanel.children[i].querySelector('button').click();
+                  }
+                }
+              }
+              
+              if(!msg) {
+                tabClickEvent(0);
+              } else {
+                tabClickEvent(msg*1);
+              }
+               
+            }
+/*
+██     ███    ██     ██     ████████ 
+██     ████   ██     ██        ██    
+██     ██ ██  ██     ██        ██    
+██     ██  ██ ██     ██        ██    
+██     ██   ████     ██        ██    
+*/
+            function initTaskInsertForm() {
+              let modal = document.getElementById('taskInsertFrm');
+
+              modal.addEventListener('click', function(e) {
+                if(e.target.classList.contains('submitBtn')){
+                  onLoaderCurtain();
+                  tabFlag.set(1, false);
+                  
+                  let task = {
+                    title : modal.querySelector("#task-title").value,
+                    content : modal.querySelector('#task-content').value,
+                    startDate : modal.querySelector('#task-start-input').value,
+                    limitDate : modal.querySelector("#task-limit-input").value,
+                    sbjNo : sbjno
+                  }
+
+                  fetch( REST_URL.TASK_INSERT, {
+                    method: "POST",
+                    headers: {
+                      'header': header,
+                      'X-Requested-with': 'XMLHttpRequest',
+                      'Content-Type': 'application/json',
+                      'X-CSRF-Token': token
+                    },
+                    body: JSON.stringify(task)
+                  })
+                  .then( res => res.json())
+                  .then( result => {
+                    Dialogs.dialog(result.type,
+                      result.title,
+                      result.msg,
+                      function() {
+                        modal.getElementsByClassName("close-btn")[0].click();
+                      }
+                    )
+                  })
+                  .finally(()=>{
+                    onTab = -1;
+                    tabClickEvent(2);
+                  }) // fetch END
+                }
+              })
+            } // initTaskInsert END
+
+            function initTaskScoreSubmit() {
+              let submitBtn = document.getElementById("task-score-submit");
+              let submitTaskList;
+
+              submitBtn.addEventListener('click', function(e){
+                requestObj = {};
+                submitTaskList = [];
+
+                for( tr of studentsTaskTr ) {
+                  // console.log(tr);
+                  // console.log(tr.data_submit_no);
+                  let score = tr.querySelector(".task-score-input").value;
+                  // console.log(score);
+                  //console.log(tr);
+                  let submitTask = {
+                    no: tr.data_submit_no,
+                    stNo: tr.data_stno,
+                    score: score
+                  }
+                  submitTaskList.push(submitTask)
+
+                  requestObj = {
+                    sbjno: sbjno,
+                    taskno: taskno,
+                    submitTaskList: submitTaskList
+                  }
+                }
+                // console.log(requestObj);
+
+                fetch(REST_URL.SUBMIT_TASK_GRADE_UPDATE, {
+                  method: "POST",
+                  headers: {
+                    'header': header,
+                    'X-Requested-with': 'XMLHttpRequest',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': token
+                  },
+                  body: JSON.stringify(requestObj)
+                })
+                .then( res => res.json())
+                .then( result => {
+                  Dialogs.dialog(result.type,
+                    result.title,
+                    result.msg,
+                    function() {
+
+                    }
+                  )
+                })
+                .finally(()=>{
+
+                }) // fetch END
+              })
+
+            } // initTaskScoreSubmit END
+            
+            function initFileInsertForm() {
+              let fileInsertForm = document.querySelector("#fileInsertFrm");
+              let title = fileInsertForm.querySelector(".input-title");
+              let file = fileInsertForm.querySelector(".input-file");
+              
+              fileInsertForm.addEventListener('click', function(ele) {
+                let formData = new FormData();
+                formData.append('file', file.files[0]);
+                formData.append('title', title.value);
+                formData.append('sbjNo', sbjno);
+                
+                console.log(file.files[0]);
+
+                if(ele.target.classList.contains('submitBtn')) {
+                    fetch( REST_URL.SUBMIT_LECTURE_FILE_UPLOAD+'?_csrf='+token, {
+                      method: 'post',
+                      body: formData
+                  })
+                  .then( res => res.json())
+                  .then( result => {
+                    Dialogs.dialog(result.type,
+                      result.title,
+                      result.msg,
+                      function() {
+                        mUrl = g_url;
+                        mUrl.searchParams.set('no', sbjno);
+                        mUrl.searchParams.set('msg', onTab)
+                        window.location.href = mUrl.href;
+                      }
+                    )
+                  })
+                  .finally(()=>{
+                    
+                  }) // fetch END
+
+                }
+              });
+            }
+
+            function setAttendanceSubmitEvent() {
+              let attendanceForm = document.querySelector("#btabs-static-student");
+              let submitBtn = attendanceForm.querySelector(".submit_button");
+
+              submitBtn.removeEventListener('click', attendanceFetchSubmitHandler);
+              submitBtn.addEventListener('click', attendanceFetchSubmitHandler);
+            }
+            
+            function attendanceFetchSubmitHandler(event) {
+              let attendanceForm = document.querySelector("#btabs-static-student");
+              let radios = attendanceForm.querySelectorAll('input[type="radio"]');
+              let stno = 0;
+
+              let attendanceList = [];
+              let form = {};
+
+              for(const radio of radios) {
+                if(radio.checked){
+                  stno = radio.parentElement.parentElement.getAttribute('data_student_id');
+                  let attendanceObj = {
+                    no : radio.name.slice(RADIO_GROUP_NAME.length),
+                    stateCode : radio.value,
+                    sbjNo : sbjno,
+                    stNo : stno,
+                  }
+                  attendanceList.push(attendanceObj);
+                }
+              }
+
+              form = {
+                sbjno: sbjno,
+                attendanceList: attendanceList
+              }
+
+              fetch(REST_URL.SUBMIT_ATTENDANCES, {
+                method: "POST",
+                headers: {
+                  'header' : header,
+                  'X-Requested-with': 'XMLHttpRequest',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': token
+                },
+                body: JSON.stringify(form),
+              })
+              .then( res => res.json())
+              .then( result => {
+                console.log(result);
+                Dialogs.dialog(result.type,
+                result.title,
+                result.msg,
+                function() {
+                  if(result.type == "error") {
+                    onTab = -1;
+                    tabClickEvent(1);
+                  }
+                })
+              })
+              // .then( (res) => {
+              //   let resBody = await res.text();
+              //   // console.log(resBody);
+              //   if(res.ok) {
+              //     Dialogs.dialog('success',
+              //     '입력 성공',
+              //     resBody,
+              //     function() {
+
+              //     })
+              //   } else {
+              //     Dialogs.dialog('error',
+              //     '입력 실패',
+              //     resBody,
+              //     function() {
+              //       console.error(resBody);
+              //       onTab = -1;
+              //       tabClickEvent(1);
+              //     })
+              //   }
+              // }).catch((err) => {
+              //   Dialogs.dialog('error',
+              //   '오류',
+              //   err,
+              //   function() {
+              //     console.error(err)
+              //     onTab = -1;
+              //     tabClickEvent(onTab);
+              //   })
+              // })
+            }
+
+            function openQnaWindow(qna_no, func) {
+              let qna = window.open(REST_URL.SUBJECT_QNA_LINK+"?no="+qna_no
+                ,"qna", "height=1200, width=920, menubar=0, status=0, toolbar=0");
+              callbackFunc = func;
+            }
+
+            function qnaTabClickEvent() {
+              tabReset();
+              tabClickEvent(3);
+            }
+
+            function detailQnaClickEvent() {
+              studentClickEvent(selectedStudentNo);
+            }
+
+            function windowCallbackFunc() {
+              callbackFunc();
+              callbackFunc = null;
+            }
+
+            function initNoticeWriteButton() {
+              let btn = document.querySelector("#subject-notice-write-btn");
+              btn.addEventListener('click', function() {
+                window.open('/tuna/staff/eclass/noticeForm?sbjno='+sbjno);
+              })
+            }
+
+            function initNoticeAllButton() {
+              let btn = document.querySelector("#subject-notice-all-btn");
+              btn.addEventListener('click', function() {
+                window.open('/tuna/staff/eclass/noticeList')
+              })
+            }
+
+/* @ TAB CLICK
+████████  █████  ██████       ██████ ██      ██  ██████ ██   ██ 
+   ██    ██   ██ ██   ██     ██      ██      ██ ██      ██  ██  
+   ██    ███████ ██████      ██      ██      ██ ██      █████   
+   ██    ██   ██ ██   ██     ██      ██      ██ ██      ██  ██  
+   ██    ██   ██ ██████       ██████ ███████ ██  ██████ ██   ██ 
+*/
+            //
+            function tabReset() {
+              onTab = -1;
+            }
+            function tabClickEvent(tabIdx) {
+              let reqURL = "";
+              let sbj = {};
+              let resFunc = {};
+
+              // if(tabFlag.get(tabIdx)){ 
+              //   offloaderCurtain();
+              //   return; 
+              // };
+              if(onTab == tabIdx) {
+                offloaderCurtain();
+                return;
+              }
+              onTab = tabIdx;
+              onLoaderCurtain();
+              
+              switch(tabIdx) {
+                case 0: // 진도
+                  reqURL = REST_URL.PROGRESS_CONTENT;
+                  resFunc = setPlanContent;
+                  sbj = sbjno;
+                  break;
+                case 1: // 출결
+                  reqURL = REST_URL.ATTENDANCE_CONTENT;
+                  resFunc = setAttendanceContent;
+                  sbj = sbjno;
+                  break;
+                case 2: // 과제
+                  reqURL = REST_URL.TASK_CONTENT;
+                  resFunc = setTaskContent;
+                  sbj = {sbjno: sbjno, taskno: taskno};
+                  reqTaskContent(tabIdx, sbj, reqURL, resFunc)
+                  return;
+                case 3: // 문의
+                  reqURL = REST_URL.QNA_CONTENT;
+                  resFunc = setQnaContent;
+                  sbj = sbjno;
+                  break;
+                case 4: // 공지
+                  //reqNoticeContent(tabIdx);
+                  reqURL = REST_URL.NOTICE_CONTENT;
+                  resFunc = setNoticeContent;
+                  sbj = sbjno;
+                  break;
+                case 5: // 이의
+                  reqURL = REST_URL.OBJECTION_CONTENT;
+                  resFunc = setObjectionContent;
+                  sbj = sbjno;
+                  break;
+                case 6: // 성적
+                  reqURL = REST_URL.GRADE_CONTENT;
+                  resFunc = setGradeContent;
+                  sbj = sbjno;
+                  break;
+                default:
+                  return;
+                  break;
+              }
+              reqSbjContent(tabIdx, sbj, reqURL, resFunc);
+
+            }
+
+            function reqSbjContent(tabIdx, sbjno, url, resFunc) {
+              // console.log(tabIdx);
+              // console.log(sbjno);
+              // console.log(url);
+              // console.log(resFunc);
+              fetch(url, {
+                method: "POST",
+                headers: {
+                  'header': header,
+                  'X-Requested-With': 'XMLHttpRequest',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': token
+                },
+                body: JSON.stringify({
+                  sbjno: sbjno
+                })
+              })
+              .then(result => result.json())
+              .then(result => {
+                resFunc(result);
+
+                offloaderCurtain();
+                tabFlag.set(tabIdx, true);
+              })
+              .catch((err) => {
+                console.error('fetch 오류', err);
+
+                offloaderCurtain();
+                tabFlag.set(tabIdx, false);
+              })
+            }
+
+            function reqTaskContent(tabIdx, data, url, resFunc) {
+              fetch(url, {
+                method: "POST",
+                headers: {
+                  'header': header,
+                  'X-Requested-With': 'XMLHttpRequest',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': token
+                },
+                body: JSON.stringify(
+                  data
+                )
+              })
+              .then(result => result.json())
+              .then(result => {
+                resFunc(result);
+
+                offloaderCurtain();
+                tabFlag.set(tabIdx, true);
+              })
+              .catch((err) => {
+                console.error('fetch 오류', err);
+
+                offloaderCurtain();
+                tabFlag.set(tabIdx, false);
+              });
+            };
+
+/*
+██████   █████  ███    ██ ███████ ██      
+██   ██ ██   ██ ████   ██ ██      ██      
+██████  ███████ ██ ██  ██ █████   ██      
+██      ██   ██ ██  ██ ██ ██      ██      
+██      ██   ██ ██   ████ ███████ ███████ 
+*/
+
+            
+            // 공지사항 패널 세팅
+            function setNoticeContent(notices) {
+              let table = document.querySelector('#subject-notice-table');
+              let tbody = table.querySelector('tbody');
+              tbody.innerHTML = "";
+              notices.forEach( (data, idx) => {
+                if(idx > 4) return false;
+                // console.log(data);
+                let mDate = new Date(data.enrollDate);
+                mDate = mDate.toISOString();
+                mDate = mDate.slice(0, mDate.indexOf('T'));
+
+                let tr = document.createElement('tr');
+                tbody.appendChild(tr);
+                tr.addEventListener("click", function() {
+                  window.open("/tuna/staff/eclass/notice?no="+data.no, 'notice', 'height=1200, width=920, menubar=0, status=0, toolbar=0');
+                })
+
+                let td_no = document.createElement('td');
+                let td_title = document.createElement('td');
+                td_title.classList.add('text-start');
+                td_title.classList.add("line-hider-fluid");
+                td_title.classList.add("pt-0");
+                let td_date = document.createElement('td');
+                
+                tr.appendChild(td_no)
+                tr.appendChild(td_title);
+                tr.appendChild(td_date);
+
+                td_no.innerText = data.no;
+                td_title.innerText = data.title;
+                td_date.innerText = mDate;
+              })
+            }
+
+            // 출결 패널 세팅
+            function setAttendanceContent(data) {
+              let table = document.querySelector('#subject-attendance-table');
+              let tbody = table.querySelector('tbody');
+
+              let date_text = document.querySelector('#attendance_date_text');
+              let mdate = new Date(data.date)
+              let weekday = (dateToKoreanWeekday(mdate));
+              date_text.innerText = `${data.date} (${weekday})`;
+
+              tbody.innerHTML = "";
+              // data.students.sort(function(a, b) {
+              //   if( a.attendance != null) { return -1; }
+              // })
+              data.students.forEach(student => {
+                let tr = document.createElement('tr');
+                let stateCode;
+                if(student.attendance != null ){
+                  tr.data_attendance_id = student.attendance.no;
+                  stateCode = student.attendance.stateCode;
+                }
+
+                let innerHTML = `
+                <td class="table-cell" style="width: 54px;">
+                  <i class="fa fa-2x fa-circle-user"></i>
+                </td>
+                <td class="table-cell">
+                  <a class="" data-bs-toggle="modal" data-bs-target="#modal-block-tabs" href="javascript:void(0);" onclick="studentClickEvent()" data_stno="${student.no}" >
+                    ${student.name}</a>
+                </td>
+                <td class="table-cell">
+                  ${student.deptName}
+                </td>
+                <td class="table-cell">
+                  ${student.no}
+                </td>
+                <td class="table-cell">
+                  <div data_student_id="${student.no}" class="atten-radio-group space-x-4">`;
+                  if(!student.attendance) {
+                    innerHTML += `<div class="text-muted" >수강 대기중</div>`
+                  } else {
+                    innerHTML += `<div class="form-check form-check-inline">
+                      <input class="radio-attend form-check-input" type="radio" id="atten-radio-attend-${student.attendance.no}" name="${RADIO_GROUP_NAME+student.attendance.no}" value="1401" ${stateCode=="1401"?"checked":""}>
+                      <label class="form-check-label" for="atten-radio-attend-${student.attendance.no}">출석</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="radio-absence form-check-input" type="radio" id="atten-radio-absence-${student.attendance.no}" name="${RADIO_GROUP_NAME+student.attendance.no}" value="1402" ${stateCode=="1402"?"checked":""}>
+                      <label class="form-check-label" for="atten-radio-absence-${student.attendance.no}">결석</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="radio-lateness form-check-input" type="radio" id="atten-radio-lateness-${student.attendance.no}" name="${RADIO_GROUP_NAME+student.attendance.no}" value="1403" ${stateCode=="1403"?"checked":""}>
+                      <label class="form-check-label" for="atten-radio-lateness-${student.attendance.no}">지각</label>
+                    </div>`
+                  }
+                 innerHTML+=  `</div>
+                </td>`;
+                // TODO 날짜 넣기
+                
+                tr.innerHTML = innerHTML;
+                tbody.appendChild(tr);
+              });
+              setAttendanceSubmitEvent();
+            }
+            
+            // 과제 패널
+            function setTaskContent(taskContent) {
+              // console.log(taskContent);
+              setTaskList(taskContent.tasks);
+              setTaskStudents(taskContent.students);
+            }
+
+            function setTaskList(tasks) {
+              let selector = document.querySelector("#task-selector");
+              let limitTag = document.querySelector("#task-limit");
+              selector.innerHTML = "";
+              selector.onchange=taskChangeEvent;
+              if(taskno == 0) {
+                  taskno = tasks[0].no;
+              }
+
+              for(task of tasks ) {
+                let option = document.createElement("option");
+                option.value = task.no;
+                option.innerText = task.title;
+                selector.appendChild(option);
+                if(task.no == taskno) {
+                  option.selected = true;
+                  limitTag.innerText = dateNumberToDateString(task.limitDate);
+                }
+              }
+            }
+
+            function taskChangeEvent(e) {
+              let selectedTask = e.target.selectedOptions[0].value;
+              taskno = selectedTask;
+              //tabFlag.set(2, false);
+              onTab = 0;
+              tabClickEvent(2);
+            }
+
+            function setTaskStudents(students) {
+              let tbody = document.querySelector("#task-table tbody");
+              tbody.innerHTML = "";
+
+              studentsTaskTr = [];
+              // students.sort(function(a,b) {
+              //   if(a.submitTask != null) return -1;
+              // });
+              for( student of students) {
+                let tr = document.createElement('tr');
+                let fileName, uri, enrollDate, score, disabled;
+                
+                tbody.appendChild(tr);
+                
+                studentsTaskTr.push(tr);
+
+                if(!student.submitTask || !student.submitTask.fileName) {
+                  fileName = "미제출"
+                  uri = "javascript:void(0);"
+                  enrollDate = "--/-- --:--:--"
+                  score = 0;
+                  disabled = "disabled"
+                } else { //
+                  tr.data_submit_id = student.submitTask.no;
+                  fileName = student.submitTask.fileName;
+                  uri = `/tuna/download?fileName=${student.submitTask.uri}\&originName=${student.submitTask.fileName}\&folder=task`;
+                  enrollDate = dateTimeToISO(student.submitTask.enrollDate);
+                  score = student.submitTask.score;
+                  tr.data_submit_no = student.submitTask.no;
+                  tr.data_stno = student.no;
+                }
+                
+                tr.classList.add("m-0");
+                tr.innerHTML = `
+                <td class="table-cell">
+                  <a class="" data-bs-toggle="modal" data-bs-target="#modal-block-tabs" href="javascript:void(0);" onclick="studentClickEvent(${student.no})">${student.name}</a>
+                </td>
+                <td class="table-cell">
+                    ${student.deptName}
+                </td>
+                <td class="table-cell">
+                  ${student.no}
+                </td>
+                <td class="table-cell text-primary">
+                  <a href="${uri}">${fileName}</a>
+                </td>
+                <td class="table-cell">
+                  ${enrollDate}
+                </td>
+                <td class="table-cell">
+                  <input type="number" class="form-control task-score-input" placeholder="" value="${score}" ${disabled}>
+                </td>
+                `;
+              }
+            }
+
+            // 강의정보 패널
+            function setPlanContent(planList) {
+              
+              let plan_progress_content = document.getElementById("subject-progress");
+              let ulTag = plan_progress_content.getElementsByTagName("ul")[0];
+              ulTag.innerHTML = "";
+
+              for(let plan of planList) {
+                let li = document.createElement('li');
+                ulTag.appendChild(li);
+                let innerHtml = `
+                  <a class="d-flex text-default-dark" id="progress-week-${plan.no}" href="javascript:void(0);" onclick="planClickEvent(this)">
+                    <div class="d-flex py-3 bg-default-dark" style="width: 15px;"></div>
+                    <div class="d-flex p-3 align-items-center" style="width: 71px;">${plan.wkCode-1200} 주
+                    </div>
+                    <div class="py-1 fs-sm">
+                      <div><strong>${plan.summary}</strong></div>
+                      <div>`;
+                for(let pAd of plan.placeAndDate) {
+                  innerHtml += `
+                  <span>
+                    [${pAd.localDate}
+                  </span>
+                  :
+                  <span>
+                    ${pAd.roomName}]
+                  </span>
+                  `;
+                }
+                innerHtml += `</div>
+                    </div>
+                  </a>`;
+                li.innerHTML = innerHtml;
+                li.data_no = plan.no;
+                li.data_wkcode = plan.wkCode-1200;
+                li.data_summary = plan.summary;
+                li.data_pad = plan.placeAndDate;
+              } 
+              ulTag.children[0].children[0].click();
+            }
+
+            function setQnaContent(qnaList) {
+              // console.log(qnaList);
+              let qna_content = document.getElementById("qna-content");
+              let ulTag = qna_content.getElementsByTagName("ul")[0];
+              let qnaContent = "";
+
+              for(let qna of qnaList) {
+                qnaContent += `
+                      <li><a class="d-flex text-primary-dark py-2" 
+                        href="javascript:void(0);"
+                        onclick="openQnaWindow(${qna.no},${qnaTabClickEvent});" >`
+                if( qna.answer == null ) {
+                  qnaContent+=`<div class="col-1 d-none d-lg-block text-center text-danger">대기</div>`;
+                } else {
+                  qnaContent += `<div class="col-1 d-none d-lg-block text-center text-success">완료</div>`;
+                }
+                
+                if( qna.visible == 1 ) {
+                  qnaContent += `<div class="col-1 d-none d-lg-block text-center text-gray">비공개</div>`;
+                } else {
+                  qnaContent += `<div class="col-1 d-none d-lg-block text-center">공개</div>`
+                }
+
+                qnaContent += `<div class="col-6 line-hider-fluid-24">${qna.title}</div>
+                    <div class="col-2 fw-bold text-end">${qna.studentVO.name}</div>
+                    <div class="col text-center">${dateNumberToDateString(qna.enrollDate)}</div>
+                  </a></li>`;
+              }
+              ulTag.innerHTML = qnaContent;
+            }
+
+            // 이의신청 패널
+            function setObjectionContent(objList) {
+              let table = document.querySelector('#subject-objection-table');
+              let tbody = table.querySelector('tbody');
+              tbody.setAttribute('id', 'objectionTb');
+              tbody.innerHTML = "";
+
+              for (let obj of objList) {
+                let tr = document.createElement('tr');
+                tr.setAttribute('data-bs-toggle', 'modal');
+                tr.setAttribute('data-bs-target', '#objection');
+                tr.setAttribute('data-objno', obj.no);
+                tr.classList.add('objTr');
+                tr.innerHTML = ` <th style="fw-semibold fs-sm">${obj.student.name}</th>
+                                 <th style="fw-semibold fs-sm">${obj.alphabet}</th>
+                                 <th style="fw-semibold fs-sm">${obj.score}</th>
+                                 <th style="fw-semibold fs-sm">${obj.enrollDate}</th>
+                                 <th style="fw-semibold fs-sm">${obj.answerDate != null ? obj.answerDate : ''}</th>
+                                 <th class="objState" style="fw-semibold fs-sm">${obj.objState}</th>`;
+                tbody.appendChild(tr);
+              }
+              table.appendChild(tbody);
+              objTrColorChange();
+            }
+
+            // 성적등록 패널
+            function setGradeContent(studList) {
+              let table = document.getElementById("subject-grade-table");
+              let tbody = table.getElementsByTagName('tbody')[0];
+              let trTags = tbody.getElementsByTagName('tr');
+              studentsGradeTr = [];
+              //for(let tr of trTags){ tr.remove() };
+              tbody.innerHTML = "";
+
+              // studList.sort(function(a,b) {
+              //   if(a.gradeVO != null) { return -1; }
+              // })
+              for( let stud of studList ) {
+                let tr = document.createElement('tr');
+                if(!stud.gradeVO) {
+
+                } else {
+                  tr.id = GRADE_STUD_ID+stud.gradeVO.no;
+                }
+                tr.data_stno = stud.no;
+                tr.classList.add('m-0');
+                let innerHTML = `
+                  <td class="table-cell">
+                    ${stud.name}
+                  </td>
+                  <td class="table-cell">
+                    ${stud.deptName}
+                  </td>
+                  <td class="table-cell">
+                    ${stud.no}
+                  </td>
+                  `
+                  if(!stud.gradeVO) {
+                    innerHTML += 
+                    `<td class="text-mute" colspan="5">수강 대기중</td>`;
+                  } else {
+                    innerHTML += 
+                    `<td><input type="number" class="form-control" value="${stud.gradeVO.attd}" disabled></td>
+                    <td><input type="number" class="form-control" name="middle" value="${stud.gradeVO.middle}"></td>
+                    <td><input type="number" class="form-control" name="finals" value="${stud.gradeVO.finals}"></td>
+                    <td><input type="number" class="form-control" value="${stud.gradeVO.task}" disabled></td>
+                    <td><input type="number" class="form-control" value="${stud.gradeVO.total}" disabled></td>`;
+                    studentsGradeTr.push(tr);
+                  }
+                tr.innerHTML = innerHTML;
+                tbody.appendChild(tr);
+              }
+            }
+            
+            // 이의신청 1건 조회
+            function objTrClickEvent() {            	
+           		document.addEventListener('click',function(e){
+           		    if(e.target.parentNode.className.search('objTr') != -1){
+           		    	let objNo = e.target.parentNode.getAttribute('data-objno');
+           		    	
+           		    	fetch(REST_URL.OBJECTION_GET+objNo)
+	           	              .then(result => result.json())
+	           	              .then(result => {
+	           	            	  if(result) {
+	           	            		  
+		           	            	  objSbjName.innerHTML = result.NAME;
+		           	            	  objStname.innerHTML = result.STNAME;
+		           	            	  objState.innerHTML = result.OBJSTATE;
+		           	            	  
+		           	            	  let content = result.CONTENT.replace(/\n/g, '<br>');
+		           	            	  objContent.innerHTML = content;
+		           	            	  
+		           	            	  if(result.ANSWER == null) {
+		           	            		  objAnswer.removeAttribute('disabled');
+		           	            		  objUpdateBtn.removeAttribute('disabled');
+		           	            	  } else {
+		           	            		  objAnswer.innerHTML = result.ANSWER;
+		           	            		  objUpdateBtn.setAttribute('disabled', true);
+		           	            	  }
+		           	            	  
+		           	            	  objUpdateBtn.setAttribute('data-objno', result.NO);
+		           	            	  objUpdateBtn.setAttribute('onclick', 'objUpdateClickEvent();')
+		           	            	  
+	           	            	  }
+	           	              })
+           		    }
+           		});
+            }
+            
+            // 이의신청 답변 등록
+            function objUpdateClickEvent() {
+            	objUpdateBtn.addEventListener('click', function() {
+            		let objNo = this.getAttribute('data-objno');
+            		let answer = objAnswer.value;
+            		
+            		if (!answer) {
+            			Dialogs.dialog('error',
+						      	   '등록 실패',
+						    	   '내용을 입력해 주세요.');
+            		} else {
+	            		Dialogs.dialog('checkConfirm',
+			 					       '정말로 등록하시겠습니까?',
+			 					       '한 번 등록된 답변은 수정할 수 없습니다.',
+			 					       function() {
+	            							fetch(REST_URL.OBJECTION_PUT, {
+		            				                method: "PUT",
+		            				                headers: {
+		            				                  'header': header,
+		            				                  'X-Requested-With': 'XMLHttpRequest',
+		            				                  'Content-Type': 'application/json',
+		            				                  'X-CSRF-Token': token
+		            				                },
+		            				                body: JSON.stringify({
+		            				                	no:objNo,
+		            				                	answer:answer
+		            				                })
+		            				             })
+		            				             .then(result => result.json())
+		            				             .then(result => {
+		            				            	 if(result) {
+		            				            		 
+			            				            	 Dialogs.dialog('success',
+					  										           '등록 완료',
+					  										           '성적 이의신청 답변 등록이 완료되었습니다.');
+			            				            	 
+			            				            	 objState.innerHTML = '답변 완료';
+			            				            	 objAnswer.setAttribute('disabled', true);
+			            				            	 objUpdateBtn.setAttribute('disabled', true);
+			            				            	 
+			            				            	 objectionTb.remove();
+			            				                 reqSbjContent(5, sbjno, REST_URL.OBJECTION_LIST, setObjectionContent);
+		            				            	 
+		            				            	 } else {
+		            				            		 Dialogs.dialog('error',
+				  										      	   '등록 실패',
+				  										    	   '이의신청 답변 등록이 정상적으로 처리되지 않았습니다.');
+		            				            	 }
+		            				             }).catch(error => {
+		            				            	 Dialogs.dialog('error',
+				  										      	   '등록 실패',
+				  										    	   '이의신청 답변 등록이 정상적으로 처리되지 않았습니다.');
+		            				             })
+	            					   })
+            		}
+            		
+            	}) 
+            }
+            
+            // 이의신청 답변 대기 배경색 변경
+            function objTrColorChange() {
+            	let objStates = document.querySelectorAll('.objState');
+            	for (let i=0; i<objStates.length; i++) {
+            		if(objStates[i].innerHTML === '답변 대기') {
+            			objStates[i].parentNode.classList.add('table-danger');
+            		}
+            	}
+            }
+            
+            function planClickEvent(ele) {
+              
+              let subject_plan_tag = document.getElementById("subject-plan");
+              let li = ele.parentNode;
+              let content = `
+              <div>${li.data_wkcode} 주차 <br> <span class="text-muted">
+              `
+              for(let PAD of li.data_pad) {
+                content += `&nbsp<span>[${PAD.localDate}:${PAD.roomName}]</span>`
+              }
+              content +=`</span><h5>${li.data_summary}</h5></div>
+              <p></p>
+              `
+              subject_plan_tag.innerHTML = content;
+            }
+
+            function studentsGradeSubmitEvent() {
+              let gradeDatas = [];
+
+              Dialogs.dialog('checkConfirm',
+                '정말 등록하시겠습니까?',
+                 '',
+                function() {
+                  onLoaderCurtain();
+                  tabFlag.set(6, false);
+
+                  for(let tr of studentsGradeTr) {
+                    let gradeObj = {
+                      no: tr.id.slice(GRADE_STUD_ID.length),
+                      middle: tr.querySelector('input[name="middle"]').value,
+                      finals: tr.querySelector('input[name="finals"]').value
+                    }
+                    gradeDatas.push(gradeObj)
+                  }
+
+                  fetch(REST_URL.GRDAES_UPDATE, {
+                    method: "POST",
+                    headers: {
+                      'header': header,
+                      'X-Requested-With': 'XMLHttpRequest',
+                      'Content-Type': 'application/json',
+                      'X-CSRF-Token': token
+                    },
+                    body: JSON.stringify(gradeDatas)
+                  })
+                  .then( res => res.json())
+                  .then( result => {
+                    onTab = -1;
+                    tabClickEvent(6);
+
+                    Dialogs.dialog(result.type,
+                    result.title,
+                    result.msg,
+                    function() {
+                      
+                    })
+                  });
+                }
+              );
+
+              
+            }
+
+            function deleteLectureFileEvent(no) {
+              let li = document.querySelector("#"+LECTURE_FILE_ID+no);
+              let file = {
+                no: no,
+                fileName: li.data_fileName,
+                uri: li.data_uri
+              }
+              fetch(REST_URL.LECTURE_FILE_DELETE, {
+                method: "POST",
+                headers: {
+                  'header': header,
+                  'X-Requested-with':'XMLHttpRequest',
+                  'Content-Type':'application/json',
+                  'X-CSRF-Token': token,
+                },
+                body: JSON.stringify(file)
+              })
+              .then( res => res.json())
+              .then( result => {
+                Dialogs.dialog(result.type,
+                  result.title,
+                  result.msg,
+                  function() {
+
+                  }
+                )
+              })
+              .finally(()=>{
+
+              }) // fetch END
+            }
+
+            
+/* @ student
+ ██████      ███████ ████████ ██    ██ ██████  ███████ ███    ██ ████████ 
+██    ██     ██         ██    ██    ██ ██   ██ ██      ████   ██    ██    
+██ ██ ██     ███████    ██    ██    ██ ██   ██ █████   ██ ██  ██    ██    
+██ ██ ██          ██    ██    ██    ██ ██   ██ ██      ██  ██ ██    ██    
+ █ ████      ███████    ██     ██████  ██████  ███████ ██   ████    ██    
+*/
+            function studentClickEvent(studno) {
+              let stNo = 0;
+              if(!studno) stNo = event.target.getAttribute('data_stno');
+              else stNo = studno;
+              selectedStudentNo = stNo;
+              // let sbjNo = event.target.dataset.sbjno;
+              let student = {
+                no: stNo
+              }
+              onUserDetailCurtain();
+              fetch(REST_URL.STUDENT_DETAIL, {
+                method: "POST",
+                headers: {
+                      'header': header,
+                      'X-Requested-With': 'XMLHttpRequest',
+                      'Content-Type': 'application/json',
+                      'X-CSRF-Token': token
+                },
+                body: JSON.stringify(student)
+              })
+              .then( async (res) => {
+                let resBody = await res.json();
+
+                if(res.ok) {
+                  setDetailUserInfo(resBody.student)
+                  setDetailUserAttendance(resBody.student);
+                  setDetailUserGrade(resBody.student);
+                } 
+                // else {
+                //   Dialogs.dialog('error',
+                //   '학생정보 가져오기 실패',
+                //   resBody.msg,
+                //   function() {
+                //     console.error(resBody.msg);
+                //   });
+                // }
+              })
+              .catch((err) => {
+                console.log(err);
+                Dialogs.dialog('error',
+                '오류',
+                err,
+                function() {
+                })
+              }).finally(()=> {
+                offUserDetailCurtaion();
+              })
+
+            }
+
+            function setDetailUserInfo(student) {
+              console.log(student);
+              let detail_name = userDetailModal.querySelector("#detail-name");
+              let detail_dept = userDetailModal.querySelector("#detail-dept");
+              let detail_no = userDetailModal.querySelector('#detail-no');
+              let detail_phone = userDetailModal.querySelector('#detail-phone');
+              let detail_email = userDetailModal.querySelector('#detail-email');
+              let detail_birth = userDetailModal.querySelector('#detail-birth');
+              let detail_addr = userDetailModal.querySelector('#detail-addr');
+
+              let detail_task_list = userDetailModal.querySelector('#detail-task-list');
+              detail_task_list.innerHTML = "";
+              let detail_qna_list = userDetailModal.querySelector('#detail-qna-list');
+              detail_qna_list.innerHTML = "";
+
+              detail_name.innerText = student.name;
+              detail_dept.innerText = student.deptName;
+              detail_no.innerText = student.no;
+              detail_phone.innerText = stringToTelStyle(student.tel);
+              detail_email.innerText = student.email;
+              detail_birth.innerText = dateNumberToDateString(student.birth);
+              detail_addr.innerText = student.addr;
+
+              for( let subject of student.subjectList) {
+                // 제출 과제
+                for( let submitTask of subject.submitTaskList ) {
+                  let url = `/tuna/download?fileName=${submitTask.uri}&originName=${submitTask.fileName}&folder=task`;
+                  let tr = document.createElement('tr');
+                  detail_task_list.appendChild(tr);
+                  tr.innerHTML = `
+                    <td>${subject.name}</td>
+                    <td>${submitTask.task.title}</td>
+                    <td class="table-cell">
+                      <i class="fa fa-file-arrow-down"></i>
+                    </td>
+                    <td class="text-primary">
+                      <a href="${url}">${submitTask.fileName}</a>
+                    </td>
+                    <td>${dateTimeToISO(submitTask.enrollDate)}</td>`;
+                }
+
+                //문의
+                for( let qna of subject.qnaList ) {
+                  let li = document.createElement('li');
+                  let answer_txt = '';
+                  let answer_class = "";
+                  let visible_txt = "";
+                  let visible_class
+
+                  if(!qna.answer) {
+                    answer_txt = "대기";
+                  } else {
+                    answer_txt = "완료";
+                    answer_class = 'text-danger';
+                  }
+
+                  if(qna.visible == 0) {
+                    visible_txt = "비공개"
+                    visible_class = "text-gray";
+                  } else {
+                    visible_txt = "공개"
+                  }
+
+                  detail_qna_list.appendChild(li);
+                  // TODO 
+                  li.innerHTML = `
+                  <li><a class="d-flex text-primary-dark py-2" 
+                      href="javascript:void(0);" 
+                      onclick="openQnaWindow(${qna.no},${detailQnaClickEvent});">
+                    <div class="col-2 text-center">${subject.name}</div>
+                    <div class="col-1 d-none d-lg-block text-center"><span class="${answer_class}">${answer_txt}</span></div>
+                    <div class="col-1 d-none d-lg-block text-center ${visible_class}">${visible_txt}</div>
+                    <div class="col-7">${textCutter(qna.title, 40)}</div>
+                    <div class="col-1 d-none d-lg-block text-center">${dateNumberToDateString(qna.enrollDate)}</div>
+                  </a></li>
+                  `;
+                }
+              }
+              
+            }
+            
+            // 출결 세팅
+            function setDetailUserAttendance(student) {
+              let detail_attendance = document.querySelector('#btabs-attendance');
+              let blockParent = detail_attendance.querySelector('#atten-block-list');
+              let blocks = detail_attendance.querySelectorAll('.block');
+              for(let block of blocks) {
+                block.remove();
+              }
+
+              for(let subject of student.subjectList) {
+                let block = document.createElement('div');
+                blockParent.appendChild(block);
+                let attenCnt = 0; //출석 수
+                let absenceCnt = 0; //결석
+                let latenessCnt = 0; // 지각
+                let attenList = subject.attendanceList;
+                attenList.sort(function(a1, a2) {
+                  return new Date(a1.classDate) - new Date(a2.classDate);
+                })
+                
+
+                let blockHTML = `
+                <div id="${DETIAL_ATTENDANCE_BLOCK_ID+subject.no}" class="block block-rounded block-themed block-bordered border-1">
+                  <div class="block-header bg-primary-darker">
+                    <div class="block-title">${subject.name}</div>
+                    <div>
+                      <button id="${ATTENDANCE_SUBJECT_ID+subject.no}" class="btn btn-sm btn-primary" onclick="submitDetailAttendance(${student.no})">적용</button>
+                    </div>
+                  </div>
+                  <div class="block-content p-0" style="overflow-x: scroll;">
+                    <table class="table table-vcenter table-bordered text-center mb-0 table-bordered border-dark border-2">
+                      <thead>
+                        <tr>
+                          <th class="p-1" style="min-width: 50px;">${subject.attendanceList.length>0?"종합":"수강 대기중"}</th>`;
+                for(let atten of attenList){
+                  let attenDate = dateNumberToDateString(atten.classDate).slice(5).replace('-','/');
+                  let th = document.createElement('th');
+                  th.classList.add("p-0");
+                  th.style.minWidth = "50px";
+                  th.innerText = attenDate;
+                  if(atten.stateCode == "1401") {
+                    attenCnt++;
+                  } else if(atten.stateCode == "1402") {
+                    absenceCnt++;
+                  } else if(atten.stateCode == "1403") {
+                    latenessCnt++;
+                  }
+
+                  blockHTML += th.outerHTML;
+                }
+                  blockHTML +=
+                        `</tr>
+                      </thead>
+                      <tbody>
+                        <tr class="attendance_list m-0">
+                          <th class="p-0">
+                            <div class="p-1">${subject.attendanceList.length>0?attenCnt:"&nbsp"}</div>
+                            <div class="p-1">${subject.attendanceList.length>0?absenceCnt:"-"}</div>
+                            <div class="p-1">${subject.attendanceList.length>0?latenessCnt:"&nbsp"}</div>
+                          </th>`;
+                  for(let atten of subject.attendanceList) {
+                    //if(!atten.stateCode) continue;
+                    let td = document.createElement('td');
+                    td.id = "detail_atten_"+atten.no;
+                    td.classList.add('p-0');
+                    td.innerHTML = `
+                            <div>
+                              <input type="radio" class="btn-check" name="atten${atten.no}" 
+                                id="atten_atten${atten.no}" autocomplete="off" value="1401"
+                                ${atten.stateCode=="1401"?"checked":"" } />
+                              <label class="btn btn-outline-success p-1 w-100" for="atten_atten${atten.no}">출석</label>
+                            </div>
+                            <div>
+                              <input type="radio" class="btn-check" name="atten${atten.no}" 
+                                id="atten_late${atten.no}" autocomplete="off" value="1402"
+                                ${atten.stateCode=="1402"?"checked":""} />
+                              <label class="btn btn-outline-danger p-1 w-100" for="atten_late${atten.no}">결석</label>
+                            </div>
+                            <div>
+                              <input type="radio" class="btn-check" name="atten${atten.no}" 
+                                id="atten_absen${atten.no}" autocomplete="off" value="1403"
+                                ${atten.stateCode=="1403"?"checked":""} />
+                              <label class="btn btn-outline-warning p-1 w-100" for="atten_absen${atten.no}">지각</label> 
+                            </div>
+                    `;
+                    blockHTML += td.outerHTML;
+                  }
+                          // <td class="p-0">
+                          //   <div>
+                          //     <input type="radio" class="btn-check" name="atten0301" id="atten0301-1" autocomplete="off" checked />
+                          //     <label class="btn btn-outline-success p-1" for="atten0301-1">출석</label>
+                          //   </div>
+                          //   <div>
+                          //     <input type="radio" class="btn-check" name="atten0301" id="atten0301-2" autocomplete="off" />
+                          //     <label class="btn btn-outline-warning p-1" for="atten0301-2">지각</label>
+                          //   </div>
+                          //   <div>
+                          //     <input type="radio" class="btn-check" name="atten0301" id="atten0301-3" autocomplete="off" />
+                          //     <label class="btn btn-outline-danger p-1" for="atten0301-3">결석</label> 
+                          //   </div>
+                    blockHTML+=`
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                `;
+                block.innerHTML = blockHTML;
+              }
+            }
+
+            // 성적 세팅
+            function setDetailUserGrade(student) {
+              //btabs-grade
+              let detail_grade = document.querySelector('#btabs-grade');
+              let blockParent = detail_grade.querySelector('#grade-block-list');
+              let blocks = detail_grade.querySelectorAll('.block');
+              for(let block of blocks) {
+                block.remove();
+              }
+              // console.log(student);
+              for(let subject of student.subjectList) {
+                let block = document.createElement('div');
+                blockParent.appendChild(block);
+
+                let blockHTML = `
+                  <div id=${DETAIL_GRADE_BLOCK_ID+subject.no} class="block block-rounded block-themed block-bordered border-1">
+                    <div class="block-header bg-primary-darker">
+                      <div class="block-title">
+                        ${subject.name}
+                      </div>
+                    </div>
+                    <div class="block-content p-0" style="overflow-x: scroll;">
+                      <table class="table table-hover table-vcenter text-center m-0">
+                        <thead>
+                          <tr>
+                            <th style="min-width: 90px;">출결</th>
+                            <th style="min-width: 90px;">중간고사</th>
+                            <th style="min-width: 90px;">기말고사</th>
+                            <th style="min-width: 90px;">과제평균</th>
+                            <th style="min-width: 90px;">총점</th>
+                            <th style="min-width: 120px;"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="m-0">`;
+                          if(subject.grade != null) {
+                            blockHTML += `<td><input type="number" class="form-control" placeholder="" value="${subject.grade.attd}" disabled></td>
+                            <td><input id="${DETAIL_INPUT_MIDDLE+subject.no}" type="number" class="form-control" placeholder="" value="${subject.grade.middle}"></td>
+                            <td><input id="${DETAIL_INPUT_FINALS+subject.no}" type="number" class="form-control" placeholder="" value="${subject.grade.finals}"></td>
+                            <td><input id="" type="number" class="form-control" placeholder="" value="${subject.grade.task}" disabled></td>
+                            <td><input id="" type="number" class="form-control" placeholder=""  value="${subject.grade.total}" disabled></td>
+                            <td><button id="${GRADE_SBUJECT_ID+subject.no}" class="btn btn-primary" onclick="submitDetailGrade(${subject.grade.no}, ${student.no})">적용</button></td>`
+                          } else {
+                            blockHTML += `
+                              <td colspan="6">
+                                <div class="text-mute">수강 대기중</div>
+                              </td>`
+                          }
+                            blockHTML+= `</tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                `;
+                block.innerHTML = blockHTML;
+              }
+
+            }
+
+            function submitDetailAttendance(studno) {
+              // console.log(event.target);
+              let sbjno = event.target.id.slice(ATTENDANCE_SUBJECT_ID.length);
+              let block = document.querySelector("#"+DETIAL_ATTENDANCE_BLOCK_ID+sbjno);
+              let checkedAttenList = block.querySelectorAll('td input[type="radio"]:checked');
+              let form = {};
+              let attendanceList = [];
+
+              for(let input of checkedAttenList) {
+                let obj = {
+                  no :input.name.slice("atten".length),
+                  stateCode: input.value
+                }
+                attendanceList.push(obj);
+              }
+
+              form = {
+                stno: studno,
+                sbjno: sbjno,
+                attendanceList: attendanceList,
+              }
+              
+              fetch(REST_URL.SUBMIT_ATTENDANCES_UPDATE, {
+                method: "POST",
+                headers: {
+                  'header': header,
+                  'X-Requested-with': 'XMLHttpRequest',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': token
+                },
+                body: JSON.stringify(form)
+              })
+              .then( res => res.json())
+              .then( result => {
+                Dialogs.dialog(result.type,
+                result.title,
+                result.msg,
+                function() { })
+              })
+            }
+
+            function submitDetailGrade(gradeno, stno) {
+              let sbjno = event.target.id.slice(GRADE_SBUJECT_ID.length);
+              let input_middle = document.querySelector(`#${DETAIL_INPUT_MIDDLE+sbjno}`);
+              let input_finals = document.querySelector(`#${DETAIL_INPUT_FINALS+sbjno}`);
+              
+              let grades = [];
+              let grade = {
+                no : gradeno,
+                middle: input_middle.value,
+                finals: input_finals.value,
+              };
+              grades.push(grade);
+              //GRDAES_UPDATE
+              fetch(REST_URL.GRDAES_UPDATE, {
+                method: "POST",
+                headers: {
+                  'header': header,
+                  'X-Requested-with': 'XMLHttpRequest',
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': token
+                },
+                body: JSON.stringify(grades)
+              })
+              .then( res => res.json())
+              .then( result => {
+                Dialogs.dialog(result.type,
+                  result.title,
+                  result.msg,
+                  function() {
+                    if(result.type == "success")
+                      studentClickEvent(stno);
+                  }
+                )
+              })
+            }
+
+            function allStudentAttend() {
+              let attendRadios = document.querySelectorAll('.radio-attend');
+              for( let atRadio of attendRadios ) {
+                atRadio.checked = true;
+              }
+            }
+
+            function onUserDetailCurtain() {
+              userDetailCurtain.classList.remove('d-none');
+            }
+            function offUserDetailCurtaion() {
+              userDetailCurtain.classList.add('d-none');
+            }
+
+            function onLoaderCurtain() {
+              loaderCurtain.classList.remove('d-none');
+            }
+            function offloaderCurtain() {
+              loaderCurtain.classList.add('d-none');
+            }
+
+            function dateNumberToDateString(dateNumber) {
+              let mDate = new Date(dateNumber);
+
+              let year = mDate.getFullYear();
+              let month = mDate.getMonth()+1;
+              let day = mDate.getDate();
+              
+              let result =  `${year}-${month >= 10?month:'0'+month}-${day>=10?day:'0'+day}`;
+              return result;
+            }
+
+            function dateTimeToISO(dateNumber) {
+              let mDate = new Date(dateNumber);
+              let result = "";
+              mDate = mDate.toISOString();
+              result += mDate.split('T')[0].slice(5) + " " + mDate.split('T')[1].split('.')[0];
+              return result;
+            }
+
+            function stringToTelStyle(text){
+              let result = text.slice(0, 3)+"-"+text.slice(3, 7)+"-"+text.slice(7, 11)
+              return result;
+            }
+
+            function textCutter(text, size) {
+              let textSize = new Blob([text]).size;
+              let targetSize = (size/(textSize/text.length));
+
+              if(textSize < size-3) {
+                return text;
+              }
+              return text.slice(0, targetSize)+"...";
+            }
+
+            function dateToKoreanWeekday(date) {
+              //console.log(date);
+              return WEEKDAY[date.getDay()];
+            }
+		  </script>
+	      <script th:src="@{/js/plugins/flatpickr/flatpickr.min.js}"></script>
+	      <script th:src="@{/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js}"></script>
+		  <script>One.helpersOnLoad(['js-flatpickr', 'jq-datepicker']);</script>
+          <script th:src="@{/js/plugins/sweetalert2/sweetalert2.min.js}"></script>
+	      <script th:src="@{/js/dialog.js}"></script>
+      </main>
+
+<!--
+███████  ██████   ██████  ████████ ███████ ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+█████   ██    ██ ██    ██    ██    █████   ██████  
+██      ██    ██ ██    ██    ██    ██      ██   ██ 
+██       ██████   ██████     ██    ███████ ██   ██ 
+-->
+      <!-- <footer id="page-footer" class="bg-flat-lighter">
+        <div class="content">footer</div>
+      </footer> -->
+    </div>
+    <script src="/js/lib/jquery.min.js"></script>
+
+    <script src="/js/oneui.app.min.js"></script>
+    <script src="/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/js/pages/be_forms_validation.min.js"></script>
+
+    <script>
+      let objDiv = document.getElementById("subject-progress");
+      objDiv.scrollTop = 72; // 스크롤 이동
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>과제</title>
+<link rel="stylesheet" th:href="@{/css/oneui.min.css}" />
+</head>
+<body>
+	<div id="page-container"
+		class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+		<!--
+ ██████  ██████  ███    ██ ████████ ███████ ███    ██ ████████ 
+██      ██    ██ ████   ██    ██    ██      ████   ██    ██    
+██      ██    ██ ██ ██  ██    ██    █████   ██ ██  ██    ██    
+██      ██    ██ ██  ██ ██    ██    ██      ██  ██ ██    ██    
+ ██████  ██████  ██   ████    ██    ███████ ██   ████    ██ 
+-->
+		<main>
+			<div class="content">
+				<div class="row">
+					<div class="col-12">
+						<h3 class="h3 fw-bold mb-2">과제</h3>
+					</div>
+				</div>
+				<div class="block block-rounded" th:each="s : ${sbjli}">
+					<div class="block-content block-content-full">
+						<div id="DataTables_Table_0_wrapper"
+							class="dataTables_wrapper dt-bootstrap5 no-footer">
+							<div class="row">
+								<div class="col-sm-12" style="height:600px;overflow-y:scroll;">
+									<table
+										class="table table-bordered table-vcenter js-dataTable-full dataTable no-footer"
+										id="DataTables_Table_0"
+										aria-describedby="DataTables_Table_0_info">
+										<thead>
+											<tr>
+												<th class="text-center fw-bold bg-dark text-white" style="width: 50px;" tabindex="0" 
+													rowspan="1">번호</th>
+												<th class="text-center fw-bold bg-dark text-white" style="width:350px;" tabindex="0" >제목</th>
+												<th class="text-center fw-bold bg-dark text-white" style="width:100px;" >작성일자</th>
+												<th class="text-center fw-bold bg-dark text-white" style="width:100px;" >마감일자</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="i, t : ${s.taskList}">
+												<td class="text-center" th:text="${i.rowNum}"></td>
+												<td><a
+													th:href="@{/stud/eclass/taskSelect(no=${i.no},sbjNo=${i.sbjNo})}"
+													th:text="${i.title}" style="color: black"></a></td>
+												<td class="text-center"  th:text="${i.startDate}"></td>
+												<td class="text-center"  th:text="${i.limitDate}"></td>
+											</tr>
+											<tr th:if=${#lists.isEmpty(s.taskList)}>
+												<th class="fw-bold text-center" colspan="4">과제가
+													등록되지 않았습니다.</th>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

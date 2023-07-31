@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    data-layout-decorate="~{layouts/adminLayout}"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>기본 배너 관리</title>
+	<link rel="stylesheet" th:href="@{/js/plugins/sweetalert2/sweetalert2.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bn-preview.css}">
+	<link rel="stylesheet" id="css-main" th:href="@{/css/oneui.min.css}">
+</head>
+<body>
+<main layout:fragment="main">
+	<!-- Page Content -->
+	<div class="mt-3" >
+		<div class="content">
+			<!-- Block -->
+			<h3 class="fw-bold">기본 바로가기 배너 수정 및 등록</h3>
+			<div class="block block-rounded">
+				<div class="block-content block-content-full">
+					<div class="m-3">
+						<div class="row justify-content-center">
+							<div class="col-xl-10">
+								<!-- Banner Preview -->
+								<h2 class="content-heading mb-2 pb-2">배너 미리보기</h2>
+								<div class="mb-4 d-flex justify-content-center preview">
+									<div class="img-section">
+										<button id="shortcutBtn" class="btn btn-alt-secondary shortcut-btn" style="display:none;" disabled>바로가기</button>
+										<img id="shortcutImg" class="img" th:src="@{/media/no_image.png}" alt="기본 바로가기 배너 이미지">
+									</div>
+								</div>
+								<div class="d-flex justify-content-end">
+									<a id="imgDownload" class="btn btn-sm btn-dark me-1 mb-3">
+							        	<i class="fa fa-fw fa-download me-1"></i>다운로드
+							        </a>
+								</div>
+								<!-- END Banner Preview -->
+							
+								<!-- Basic Banner Input -->
+								<h2 class="content-heading border-bottom mb-2 pb-2">배너 정보</h2>
+				                <div class="row">
+				                    <p class="fs-sm text-muted">
+				                      5MB 이하의 사진 파일(jpg, jpeg, png)을 업로드하세요.
+				                    </p>
+									<div class="col-xl-6 mb-4 mb-xl-0">
+				                      <label class="form-label" for="file">사진 올리기 <span class="text-danger">*</span></label>
+				                      <div id="fileShake">
+					                      <input class="form-control" type="file" id="file" name="file"
+					                      		accept="image/jpg, image/jpeg, image/png">
+				                      </div>
+				                    </div>
+									<div class="col-xl-6">
+				                      <label class="form-label" for="urlInput">버튼 URL <span class="text-danger">*</span></label>
+				                      <div id="inputTxtShake">
+					                      <input type="text" class="form-control" id="inputTxt" name="url" 
+					                      		placeholder="URL Input" >
+				                      </div>
+				                    </div>
+						    		<div class="d-flex justify-content-end mt-4">
+					      				<button type="button" class="btn btn-sm btn-dark m-1 submit-btn" data-job="1302">
+					      					<i class="fa fa-fw fa-image me-1"></i>배너 등록
+					      				</button>
+				      				</div>
+				      			</div>
+						    	<!-- END Basic Banner Input -->
+	      					</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END Block -->
+		</div>
+	</div>
+	<!-- END Page Content -->
+	<script th:src="@{/js/plugins/sweetalert2/sweetalert2.min.js}"></script>
+	<script th:src="@{/js/dialog.js}"></script>
+	<script th:src="@{/js/banner/banner.js}"></script>
+	<script th:src="@{/js/banner/bn-ajax.js}"></script>
+	
+	<script type="text/javascript" th:inline="javascript">
+
+		$(function() {
+			banner('1302');
+			submit(/*[[#{msg.err.selectPlz('파일')}]]*/ 'default',
+					/*[[#{msg.err.inputPlz('텍스트')}]]*/ 'default',
+					/*[[#{msg.err.selectPlz('옵션')}]]*/ 'default',
+					/*[[#{title.cfm.enroll}]]*/ 'default',
+					/*[[#{msg.cfm.notUpdate}]]*/ 'default');
+		})
+		
+	</script>
+	
+</main>
+
+</body>
+</html>
