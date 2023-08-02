@@ -5,11 +5,20 @@ spring:
   mvc:
     servlet:
       path: /tuna
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
 
-thymeleaf:
-  prefix=classpath: templates/
-  suffix: .html
-  check-template-location: true
-  cache: false
-  mvc:
-    static-path-pattern: "/static/**"
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      multiline: true
+  config:
+    activate:
+      on-profile: common
+
+springdoc:
+  gateway-url: http://localhost:10000

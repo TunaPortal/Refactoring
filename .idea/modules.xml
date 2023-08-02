@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/module-gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/module-gateway.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tuna.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tuna.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tunaEclass.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tunaEclass.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/tunaLectureApply.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tunaLectureApply.main.iml" />
