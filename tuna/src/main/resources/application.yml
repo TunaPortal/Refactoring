@@ -19,6 +19,3 @@ decorator:
   config:
     activate:
       on-profile: common
-
-springdoc:
-  gateway-url: http://localhost:10000
