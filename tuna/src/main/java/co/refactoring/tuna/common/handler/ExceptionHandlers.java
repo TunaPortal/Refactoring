@@ -3,7 +3,7 @@ package co.refactoring.tuna.common.handler;
 import co.refactoring.tuna.common.ResponseMsg;
 import co.refactoring.tuna.common.vo.ResultVo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.DataAccessException;
+//import org.springframework.dao.DataAccessException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -70,18 +70,18 @@ public class ExceptionHandlers
                 .build();
     }
 
-    @ExceptionHandler(DataAccessException.class)
-    public ResultVo dataAccessException(Exception e)
-    {
-        String logString = String.format("[E][%s][%s]", e.getStackTrace()[0], e.getMessage());
-        e.printStackTrace();
-        log.error(logString);
-
-
-        return ResultVo.builder()
-                .responseMsg(ResponseMsg.RES_ERROR)
-                .data(Arrays.asList(e.getLocalizedMessage()))
-                .build();
-    }
+//    @ExceptionHandler(DataAccessException.class)
+//    public ResultVo dataAccessException(Exception e)
+//    {
+//        String logString = String.format("[E][%s][%s]", e.getStackTrace()[0], e.getMessage());
+//        e.printStackTrace();
+//        log.error(logString);
+//
+//
+//        return ResultVo.builder()
+//                .responseMsg(ResponseMsg.RES_ERROR)
+//                .data(Arrays.asList(e.getLocalizedMessage()))
+//                .build();
+//    }
 }
 
