@@ -5,6 +5,20 @@ spring:
   mvc:
     servlet:
       path: /tunaLectureApply
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+    # spring data jpa
+    # ddl-auto: update = 엔티티 정보를 DB에 자동으로 변경해줌, 테이블도 만들어줌 갸꿀딱, 개발 다 하면 none로 변경
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 thymeleaf:
   prefix=classpath: templates/
