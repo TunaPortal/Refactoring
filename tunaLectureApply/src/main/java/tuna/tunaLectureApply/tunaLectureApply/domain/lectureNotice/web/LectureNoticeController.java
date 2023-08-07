@@ -2,19 +2,20 @@ package tuna.tunaLectureApply.tunaLectureApply.domain.lectureNotice.web;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import tuna.tunaLectureApply.tunaLectureApply.domain.lectureNotice.entity.LectureNotice;
 import tuna.tunaLectureApply.tunaLectureApply.domain.lectureNotice.entity.SubjectEntity;
 import tuna.tunaLectureApply.tunaLectureApply.domain.lectureNotice.service.LectureNoticeService;
 import tuna.tunaLectureApply.tunaLectureApply.domain.lectureNotice.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/lecture-notices")
+@CrossOrigin("*")
+@RestController
+//@RequestMapping("/lecture-notices")
 @Tag(name = "강의 - 공지사항")
 public class LectureNoticeController {
 
@@ -28,43 +29,79 @@ public class LectureNoticeController {
 	}
 
 	// 리스트
-	@GetMapping
+	@GetMapping("/selectLectureNoticeList")
 	@Operation(summary = "리스트", description = "리스트")
-	public String getAllLectureNotices(Model model) {
+	public ResponseEntity<List<LectureNotice>> getAllLectureNotices(Model model) {
 		List<LectureNotice> lectureNotices = lectureNoticeService.getAllLectureNoticesWithSubject();
 		model.addAttribute("lectureNotices", lectureNotices);
 		/*List<LectureNotice> lectureNotices = lectureNoticeService.getAllLectureNotices();
 		model.addAttribute("lectureNotices", lectureNotices);*/
-		return "staff/eclass/noticeList";
+		//return "staff/eclass/noticeList";
+		return ResponseEntity.ok(lectureNotices);
 	}
 
 	// 상세보기
-	@GetMapping("/{id}")
-	@Operation(summary = "상세보기", description = "상세보기")
-	public String getLectureNoticeById(@PathVariable Long id, Model model) {
+	@GetMapping("/selectLectureNoticeSelect/{id}")
+	public ResponseEntity<LectureNotice> getLectureNoticeById(@PathVariable Long id) {
 		LectureNotice lectureNotice = lectureNoticeService.getLectureNoticeById(id);
-		model.addAttribute("lectureNotice", lectureNotice);
-		return "staff/eclass/notice";
+		if (lectureNotice != null) {
+			return ResponseEntity.ok(lectureNotice);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	// 등록
+	@GetMapping("/selectLectureNoticeInsert")
+	public ResponseEntity<LectureNotice> newLectureNotice() {
+		LectureNotice lectureNotice = new LectureNotice();
+		return ResponseEntity.ok(lectureNotice);
 	}
 
-	// 등록
-	@GetMapping("/new")
+	// 수정
+	@GetMapping("/selectLectureNoticeUpdate/{id}")
+	public ResponseEntity<LectureNotice> editLectureNotice(@PathVariable Long id) {
+		LectureNotice lectureNotice = lectureNoticeService.getLectureNoticeById(id);
+		if (lectureNotice != null) {
+			List<SubjectEntity> subjects = subjectService.getAllSubjects();
+			//lectureNotice.setSubjects(subjects);
+			return ResponseEntity.ok(lectureNotice);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	// 삭제
+	@GetMapping("/selectLectureNoticeDelete/{id}")
+	// Void를 사용한 이유 = 해당 메서드가 반환하는데 반환할 데이터가 없음을 나타내기 위해.
+	// 204 코드를 반환하는데 204 코드는 요청은 성공했지만 본문에는 데이터가 없음을 의미
+	// 삭제 됐으니까 데이터 없겠지 ㅇㅈ?
+	public ResponseEntity<Void> deleteLectureNotice(@PathVariable Long id) {
+		lectureNoticeService.deleteLectureNotice(id);
+		return ResponseEntity.ok().build();
+	}
+}
+	/*
+	@GetMapping("/selectLectureNoticeInsert")
 	@Operation(summary = "등록", description = "등록")
 	public String newLectureNotice(Model model) {
 		model.addAttribute("lectureNotice", new LectureNotice());
 		return "staff/eclass/noticeForm";
 	}
+	 */
 
 	// 등록 후 리스트로 리다이렉트
+	/*
 	@PostMapping
 	@Operation(summary = "등록 후 리스트로", description = "등록 후 리스트로")
 	public String createLectureNotice(@ModelAttribute LectureNotice lectureNotice) {
 		lectureNoticeService.saveLectureNotice(lectureNotice);
 		return "redirect:/lecture-notices";
 	}
+	 */
 
-	// 수정
-	@GetMapping("/{id}/edit")
+	
+	/*
+	@GetMapping("/selectLectureNoticeUpdate/{id}")
 	@Operation(summary = "수정", description = "수정")
 	public String editLectureNotice(@PathVariable Long id, Model model) {
 		LectureNotice lectureNotice = lectureNoticeService.getLectureNoticeById(id);
@@ -73,11 +110,13 @@ public class LectureNoticeController {
 		model.addAttribute("subjects", subjects);
 		return "staff/eclass/noticeUpdate";
 	}
+	 */
 
+	/*
 	// 수정 후 리스트로 리다이렉트
 	@PostMapping("/{id}/update")
 	@Operation(summary = "수정 후 리스트로", description = "수정 후 리스트로")
-	public String updateLectureNotice(@PathVariable Long id, @ModelAttribute LectureNotice updatedLectureNotice) {
+	public String updateLectureNotice(@PathVariable Long id, @RequestBody LectureNotice updatedLectureNotice) {
 		LectureNotice lectureNotice = lectureNoticeService.getLectureNoticeById(id);
 		lectureNotice.setTitle(updatedLectureNotice.getTitle());
 		lectureNotice.setContent(updatedLectureNotice.getContent());
@@ -85,15 +124,18 @@ public class LectureNoticeController {
 		lectureNoticeService.saveLectureNotice(lectureNotice);
 		return "redirect:/lecture-notices";
 	}
+	 */
 
 	// 삭제
-	@GetMapping("/{id}/delete")
+	/*
+	@GetMapping("/selectLectureNoticeDelete/{id}")
 	@Operation(summary = "삭제", description = "삭제")
 	public String deleteLectureNotice(@PathVariable Long id) {
 		lectureNoticeService.deleteLectureNotice(id);
-		return "redirect:/lecture-notices";
+		return "redirect:/selectLectureNoticeList";
 	}
 }
+	 */
 	/*
 	@RequestMapping("/staff/eclass/noticeUpdate")
 	public String noticeUpdateView(Model model, LectureNoticeVO notice) {
