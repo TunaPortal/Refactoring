@@ -6,9 +6,9 @@ spring:
     servlet:
       path: /tunaLectureApply
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: root
+    url: jdbc:postgresql://localhost:5432/test
+    username: test
+    password: test
     driver-class-name: org.postgresql.Driver
 
     # spring data jpa
@@ -19,6 +19,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+      # initialize-schema : spring batch 메타 데이터 테이블 자동생성
+  batch:
+    jdbc:
+      initialize-schema: always
 
 thymeleaf:
   prefix=classpath: templates/
