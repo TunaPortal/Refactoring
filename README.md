@@ -4,8 +4,7 @@
 ## 🙋‍♀️소개
 >예담에서 만난 사람들 <br>
 >개발기간 : 2023.00.00 ~ 2024.00.00 <br>
-><a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FTunaPortal%boot&count_bg=%2313E9D6&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=%EB%B0%A9%EB%AC%B8%EC%9E%90+%3A+&edge_flat=false"/></a>
-
+><a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FTunaPortal%2Fboot&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=%EB%B0%A9%EB%AC%B8%EC%9E%90&edge_flat=false"/></a>
 
 ## 🙋‍♀️구성원  
 | 이름 | 이름 | 이름 | 이름 |
