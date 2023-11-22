@@ -49,10 +49,12 @@
 | 사진들어감 | 사진들어감 |
 
 ## 🙋‍♀️아키텍쳐
-
 #### 디렉토리 구조
 <details>
 <summary>Back</summary>
+
+<details>
+<summary>gateway</summary>
 
 ```
 ├── README.md
@@ -113,6 +115,29 @@
     └── styles
         └── Home.module.css
 ```
+</details>
+<details>
+<summary>tuna</summary>
+
+```
+롸
+```
+</details>
+<details>
+<summary>tunaEclass</summary>
+
+```
+롸
+```
+</details>
+<details>
+<summary>tunaLectureApply</summary>
+
+```
+롸
+```
+</details>
+
 </details>
 <details>
 <summary>Front</summary>
