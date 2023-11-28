@@ -4,6 +4,7 @@ import tuna.tunaEclass.tunaEclass.eclassRoom.entity.EclassRoomEntity;
 
 public class EclassRoomEntityBuilder {
 
+
     public static EclassRoomEntity buildFromDTO(EclassRoomDTO eclassRoomDTO) { // DTO -> Entity 변환
         return EclassRoomEntity.builder() // builder을 이용하여 entity 객체 생성
                 .roomCdId(eclassRoomDTO.getRoomCdId())
