@@ -10,7 +10,7 @@
 | [권태현](https://github.com/kwontaehyun) | [지수빈](https://github.com/Binggla) | [나현주](https://github.com/haddress) | [김영민](https://github.com/GoonManDoo)  | 
 | --- | --- | --- | --- |
 | <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbVxvyG%2FbtsA9WUsvXk%2FVRoti8yfsNVwKVNQW6elQ0%2Fimg.png"/> | <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHn3Pf%2FbtsA9fGClmf%2FlliTMcTXMwecl2ywVBZC80%2Fimg.png"/> | <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FN64SR%2FbtsA3PCxLaJ%2Fcf65i1C9GYQfkdFhyIOdM1%2Fimg.png"/> | <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQFbnO%2FbtsA0aUUkEY%2FTmRZYGVKEmmL29hN0jFz8K%2Fimg.png"/> |
-| 담당 | 담당 | 담당 | e-Class <br> Oracle Cloud |
+| 담당 | 담당 | 담당 | - e-Class <br> - Oracle Cloud |
 
 ## 🛠기술 스택
 #### FrontEnd
