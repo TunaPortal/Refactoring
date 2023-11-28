@@ -40,7 +40,7 @@
 ![Jenkins](https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
 ![Apache Tomcat](https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black)
-<img src="https://img.shields.io/badge/Oracle Cloud-F80000?logo=oracle&logoColor=white">
+![Apache Tomcat](https://img.shields.io/badge/Oracle%20Cloud-F80000.svg?style=for-the-badge&logo=oracle&logoColor=white)
 
 #### Communication
 ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
