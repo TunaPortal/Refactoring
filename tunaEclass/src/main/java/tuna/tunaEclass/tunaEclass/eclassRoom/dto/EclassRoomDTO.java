@@ -15,7 +15,14 @@ public class EclassRoomDTO {
     public EclassRoomDTO() {
     }
 
+   /* public EclassRoomDTO(String roomCdId, String roomNm, int hdcnt, String useYn) {
+    }*/
+
     public EclassRoomDTO(String roomCdId, String roomNm, int hdcnt, String useYn) {
+        this.roomCdId = roomCdId;
+        this.roomNm = roomNm;
+        this.hdcnt = hdcnt;
+        this.useYn = useYn;
     }
 
     /* ex) DB에서 조회할 때 강의실 정보를 Entity 객체에 담아오고, DTO로 변환하여 클라이언트에게 전달 */
